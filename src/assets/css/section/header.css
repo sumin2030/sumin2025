@@ -26,7 +26,7 @@
 }
 .header__nav li {
   display: inline;
-}
+} 
 .header__nav li a {
   text-transform: uppercase;
   font-size: 14px;

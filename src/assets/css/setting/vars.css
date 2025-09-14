@@ -3,13 +3,19 @@
     --mainKor-font: "nanumSquareNeo";
     --mainNum-font: "gmarket";
  
-    --mainBg-color: #f3ede8;
-    --subBg100: #cdc0b1;
-    --subBg200: #afa395;
-    --subBg300: #81887c;
+    --mainBg-color: #ffffff;
+    --subBg100: #C8B5AB;
+    --subBg200: #C7C4C3;
+    --subBg300: #817D78;
     --subBg400: #afa7a2;
-    --subBg500: #a6afa2;
- 
+    --subBg500: #4E5650;
+    --subBg600: #4E5650;
+    --subBg700: #4E5650;
+    --subBg800: #4E5650;
+    --subBg900: #4E5650;
+    --subBg1000: #00ff44;
+
+
     --white: #fff;
     --black: #000;
     --black100: #2b2b2b;

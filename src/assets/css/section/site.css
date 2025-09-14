@@ -95,7 +95,7 @@
 .site__item .info span {
   font-family: var(--mainKor-font);
   font-size: 12px;
-  padding: 3px 0;
+  padding: 3% 0;
   text-transform: uppercase;
 }
  

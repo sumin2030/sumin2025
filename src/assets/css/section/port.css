@@ -4,7 +4,7 @@
   overflow: hidden;
 }
 .port__inner {
-  padding: 16px;
+  padding: 16%;
 }
 .port__title {
   width: 100%;
@@ -27,7 +27,7 @@
 .port__wrap {
   display: flex;
   flex-wrap: wrap;
-  width: 7000px;
+  width: 7000%;
 }
 .port__item {
   width: 500px;

@@ -11,7 +11,7 @@
     flex-direction: column;
 }
 .contact__title {
-    font-size: 10vw;
+    font-size: clamp(30px, 5vw, 80px);
     text-transform: uppercase;
     line-height: 1;
     font-weight: 800;

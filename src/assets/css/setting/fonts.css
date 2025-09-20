@@ -1,13 +1,13 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap");
-@import url("https://websfont.github.io/nanumSquareNeo/nanumSquareNeo.css");
-@import url("https://websfont.github.io/gmarket/gmarket.css");
- 
-.mont {
-    font-family: "Montserrat";
+/* Pretendard 웹폰트 불러오기 */
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
+
+/* Pretendard 폰트 클래스 */
+.pretendard {
+    font-family: "Pretendard", sans-serif;
 }
-.nanum {
-    font-family: "nanumSquareNeo";
+
+/* 사이트 전체에 적용 (원하면 이 부분만으로도 충분) */
+body {
+    font-family: "Pretendard", sans-serif;
 }
-.gmarket {
-    font-family: "gmarket";
-}
+

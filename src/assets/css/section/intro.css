@@ -62,7 +62,7 @@
 .intro_lines {
   width: 100%;
 }
-.intro_lines .line {
+.intro__lines .line {
   display: block;
   width: 100%;
   height: 1px;

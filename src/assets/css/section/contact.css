@@ -22,7 +22,7 @@
 .contact__text {
     width: 100%;
     height: 40vh;
-    background-color: var(--black);
+    background-color: var(--black5);
     color: var(--white);
     display: flex;
     align-items: center;
@@ -49,7 +49,6 @@
     display: block;
     width: 100%;
     height: 1px;
-    background-color: var(--black);
     margin-bottom: 0.5vw;
 }
 .contact__lines.top .line {
@@ -59,45 +58,59 @@
 }
 .contact__lines.top .line:nth-child(1){
     height: 1px;
+    background-color: var(--black12);
 }
 .contact__lines.top .line:nth-child(2){
     height: 2px;
+    background-color: var(--black11);
 }
 .contact__lines.top .line:nth-child(3){
     height: 5px;
+    background-color: var(--black10);
 }
 .contact__lines.top .line:nth-child(4){
     height: 9px;
+    background-color: var(--black9);
 }
 .contact__lines.top .line:nth-child(5){
     height: 13px;
+    background-color: var(--black8);
 }
 .contact__lines.top .line:nth-child(6){
     height: 17px;
+    background-color: var(--black7);
 }
 .contact__lines.top .line:nth-child(7){
     height: 25px;
+    background-color: var(--black6);
 }
 .contact__lines .line:nth-child(1){
     height: 25px;
+    background-color: var(--black6);
 }
 .contact__lines .line:nth-child(2){
     height: 17px;
+    background-color: var(--black7);
 }
 .contact__lines .line:nth-child(3){
     height: 13px;
+    background-color: var(--black8);
 }
 .contact__lines .line:nth-child(4){
     height: 9px;
+    background-color: var(--black9);
 }
 .contact__lines .line:nth-child(5){
     height: 5px;
+    background-color: var(--black10);
 }
 .contact__lines .line:nth-child(6){
     height: 2px;
+    background-color: var(--black11);
 }
 .contact__lines .line:nth-child(7){
     height: 1px;
+    background-color: var(--black12);
 }
 @media (max-width: 800px){
     .contact__title {

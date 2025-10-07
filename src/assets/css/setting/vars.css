@@ -28,7 +28,16 @@
     --black200: #434343;
     --black300: #686868;
     --black400: #e0e0e0;
- 
+    --black5: #00000091;
+    
+    --black6: #00000091;
+    --black7: #00000063;
+    --black8: #00000049;
+    --black9: #00000038;
+    --black10: #00000031;
+    --black11: #00000023;
+    --black12: #00000011;
+    
     /* 기본 폰트 설정 */
     font-family: var(--mainEng-font), var(--mainKor-font);
     font-size: 16px;

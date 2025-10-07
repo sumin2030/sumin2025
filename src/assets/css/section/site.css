@@ -31,19 +31,19 @@
   left: 0;
 }
 .site__item.s1 {
-  background-color: var(--subBg100);
+  background-color: var(--subBg1100);
   top: 180px;
 }
 .site__item.s2 {
-  background-color: var(--subBg200);
+  background-color: var(--subBg1200);
   top: 200px;
 }
 .site__item.s3 {
-  background-color: var(--subBg300);
+  background-color: var(--subBg1300);
   top: 220px;
 }
 .site__item.s4 {
-  background-color: var(--subBg400);
+  background-color: var(--subBg1400);
   top: 240px;
 }
 .site__item .num {
@@ -61,7 +61,7 @@
 }
 .site__item .text > div {
   font-size: 3vw;
-  line-height: 1;
+  line-height: 1.5;
   font-weight: 900;
   text-transform: uppercase;
   text-decoration: underline;
@@ -94,8 +94,8 @@
 }
 .site__item .info span {
   font-family: var(--mainKor-font);
-  font-size: 12px;
-  padding: 3% 0;
+  font-size: 16px;
+  padding: 1.5% 0;
   text-transform: uppercase;
 }
  

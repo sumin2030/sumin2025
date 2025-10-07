@@ -52,19 +52,19 @@
   background-color: var(--subBg500);
 }
 .port__item.p6 {
-  background-color: var(--subBg100);
+  background-color: var(--subBg600);
 }
 .port__item.p7 {
-  background-color: var(--subBg200);
+  background-color: var(--subBg700);
 }
 .port__item.p8 {
-  background-color: var(--subBg300);
+  background-color: var(--subBg800);
 }
 .port__item.p9 {
-  background-color: var(--subBg400);
+  background-color: var(--subBg900);
 }
 .port__item.p10 {
-  background-color: var(--subBg500);
+  background-color: var(--subBg1000);
 }
 .port__item .num {
   font-size: 2rem;

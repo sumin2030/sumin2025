@@ -21,7 +21,7 @@
 }
 .intro__text {
   width: 100%;
-  height: 40vh;
+  height: 47vh;
   background-color: var(--black);
   color: var(--white);
   display: flex;
@@ -46,8 +46,8 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: 30vh;
-  height: 30vh;
+  width: 45vh;
+  height: 45vh;
   border-radius: 50%;
   overflow: hidden;
   filter: grayscale(100%);

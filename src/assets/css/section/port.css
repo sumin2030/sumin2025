@@ -11,11 +11,11 @@
   height: 6vw;
   font-size: 4vw;
   font-weight: 900;
-  line-height: 1.6;
+  line-height: -0.5;
   font-family: var(--mainKor-font);
   text-transform: uppercase;
   color: var(--black100);
-  border-bottom: 0.4vw solid var(--black100);
+  border-bottom: 0.2vw solid var(--black100);
   margin-bottom: 16px;
   text-indent: -0.26vw;
 }

@@ -12,7 +12,7 @@ export function port() {
             trigger: "#port",
             start: "top 56px",
            // end: "+=3000",
-            end: ()=> "+=" + document.querySelector("#port_wrap_area").offsetWidth,
+            end: ()=> "+=" +   document.querySelector("#port_wrap_area").offsetWidth,
             pin: true,
             scrub: 1,
             markers: false,

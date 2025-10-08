@@ -14,7 +14,7 @@ export function port() {
            // end: "+=3000",
             end: ()=> "+=" +   document.querySelector("#port_wrap_area").offsetWidth,
             pin: true,
-            scrub: 1,
+            scrub: 0.5,
             markers: false,
             invalidateOnRefresh: true,
             anticipatePin: 1,

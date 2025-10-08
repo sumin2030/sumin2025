@@ -27,7 +27,7 @@
 .port__wrap {
   display: flex;
   flex-wrap: wrap;
-  width: 7000%;
+  width: 800%;
 }
 .port__item {
   width: 500px;

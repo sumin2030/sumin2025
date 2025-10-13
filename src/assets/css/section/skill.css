@@ -8,8 +8,8 @@
   top: 70px;
   left: 0;
   width: 48%;
-  height: 6vw;
-  font-size: 4vw;
+  height: 3.5vw;
+  font-size: 2.5vw;
   font-weight: 900;
   line-height: -0.5;
   font-family: var(--mainKor-font);
@@ -18,7 +18,7 @@
   border-bottom: 0.2vw solid var(--black100);
 }
 .skill__title em {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   font-weight: 400;
   line-height: 2;
 }
@@ -26,7 +26,7 @@
   width: 50%;
 }
 .skill__desc span {
-  font-size: 5vw;
+  font-size: 4vw;
   line-height: 1;
   font-weight: 900;
   line-height: 1.3;
@@ -40,7 +40,7 @@
 }
 .skill__desc p {
   margin-bottom: 30vh;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
 }
  
  @media (max-width: 800px) {

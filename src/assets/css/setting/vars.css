@@ -3,17 +3,17 @@
     --mainKor-font: "nanumSquareNeo";
     --mainNum-font: "gmarket";
  
-    --mainBg-color: #ffffff;
-    --subBg100: #d8cbc5;
-    --subBg200: #33333377;
-    --subBg300: #b8b8b8;
-    --subBg400: #bbc5be;
-    --subBg500: #aba7a2;
-    --subBg600: #b1a99f;
-    --subBg700: #d3caca;
-    --subBg800: #161a2948;
-    --subBg900: #ede3da;
-    --subBg1000: #a3a3a3;
+    --mainBg-color: #F3F3F3;
+    --subBg100: #ffffff;
+    --subBg200: #ffffff;
+    --subBg300: #ffffff;
+    --subBg400: #ffffff;
+    --subBg500: #ffffff;
+    --subBg600: #ffffff;
+    --subBg700: #ffffff;
+    --subBg800: #ffffff;
+    --subBg900: #ffffff;
+    --subBg1000: #ffffff;
    
     --subBg1100: #afa7a7;
     --subBg1200: #d9d9d9;
@@ -38,13 +38,13 @@
     --black11: #00000023;
     --black12: #00000011;
 
-    --black13: #00000015;
-    --black14: #00000030;
-    --black15: #00000045;
-    --black16: #00000060;
-    --black17: #00000096;
-    --black18: #000000c7;
-    --black19: #000000ef;
+    --black13: #00000010;
+    --black14: #00000020;
+    --black15: #00000030;
+    --black16: #00000040;
+    --black17: #00000070;
+    --black18: #00000090;
+    --black19: #000000c2;
 
     /* 기본 폰트 설정 */
     font-family: var(--mainEng-font), var(--mainKor-font);

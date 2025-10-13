@@ -8,8 +8,8 @@
 }
 .port__title {
   width: 100%;
-  height: 6vw;
-  font-size: 4vw;
+  height: 3.5vw;
+  font-size: 2.5vw;
   font-weight: 900;
   line-height: -0.5;
   font-family: var(--mainKor-font);
@@ -20,7 +20,7 @@
   text-indent: -0.26vw;
 }
 .port__title em {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   font-weight: 400;
   line-height: 2;
 }
@@ -31,10 +31,11 @@
 }
 .port__item {
   width: 500px;
-  height: 70vh;
+  height: 60vh;
   background-color: var(--subBg100);
-  padding: 2.5rem;
+  padding: 5rem;
   margin-right: 20px;
+  border-radius: 10%;
 }
 .port__item.p1 {
   background-color: var(--subBg100);

@@ -35,7 +35,7 @@
   background-color: var(--subBg100);
   padding: 5rem;
   margin-right: 20px;
-  border-radius: 10%;
+  border-radius: 20px 20px 20px 20px;
 }
 .port__item.p1 {
   background-color: var(--subBg100);
@@ -121,6 +121,7 @@
     width: 400px;
     padding: 40px 30px;
     height: auto;
+    border-radius: 15px 15px 15px 15px;
   }
 }
  

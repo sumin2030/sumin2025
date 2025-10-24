@@ -29,7 +29,7 @@
   flex-direction: column;
   position: sticky;
   left: 0;
-  border-radius: 3%;
+  border-radius: 20px 20px 20px 20px;
   overflow: hidden;
 }
 .site__item.s1 {
@@ -113,19 +113,19 @@
   }
   .site__item.s1 {
     top: 140px;
-    border-radius: 10%;
+    border-radius: 15px 15px 15px 15px;
   }
   .site__item.s2 {
     top: 160px;
-  border-radius: 10%;
+    border-radius: 15px 15px 15px 15px;
   }
   .site__item.s3 {
     top: 180px;
-    border-radius: 10%;
+    border-radius: 15px 15px 15px 15px;
   }
   .site__item.s4 {
     top: 200px;
-    border-radius: 10%;
+    border-radius: 15px 15px 15px 15px;
   }
   .site__item .num {
     font-size: 80px;

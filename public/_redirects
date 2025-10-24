@@ -1,0 +1,5 @@
+# Netlify를 위한 SPA 라우팅 리다이렉트 설정
+# 모든 경로를 index.html로 리다이렉트하여 클라이언트 사이드 라우팅이 작동하도록 함
+
+# 모든 경로를 index.html로 리다이렉트 (SPA 라우팅)
+/* /index.html 200

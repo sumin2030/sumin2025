@@ -67,7 +67,7 @@
   margin-bottom: 1rem;
 }
 .site__item .text > div {
-  font-size: 3vw;
+  font-size: 2vw;
   line-height: 1.5;
   font-weight: 900;
   text-transform: uppercase;
@@ -118,7 +118,7 @@
   }
   .site__wrap {
     grid-template-columns: 1fr;
-    gap: 16px;
+    gap: 25px;
   }
   .site__item.s1 {
     top: 140px;

@@ -1,13 +1,13 @@
 .skill__inner {
   padding: 16px;
   display: flex;
-  justify-content: space-between;
+  gap: 2%;
 }
 .skill__title {
   position: sticky;
   top: 70px;
   left: 0;
-  width: 48%;
+  width: 32%;
   height: 3.5vw;
   font-size: 2.5vw;
   font-weight: 900;
@@ -23,7 +23,7 @@
   line-height: 2;
 }
 .skill__desc {
-  width: 50%;
+  width: 66%;
 }
 .skill__desc span {
   font-size: 4vw;
@@ -44,8 +44,9 @@
 }
  
  @media (max-width: 800px) {
-  .slkll__inner {
+  .skill__inner {
     flex-direction: column;
+    gap: 0;
   }
   .skill__title {
     width: 100%;

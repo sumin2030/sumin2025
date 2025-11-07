@@ -66,7 +66,13 @@
 .port__item.p9 {
   background-color: var(--subBg900);
 }
-.port__item.p10 {
+.port__item.p11 {
+  background-color: var(--subBg1000);
+}
+.port__item.p12 {
+  background-color: var(--subBg1000);
+}
+.port__item.p13 {
   background-color: var(--subBg1000);
 }
 .port__item .num {

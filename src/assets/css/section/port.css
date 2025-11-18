@@ -127,6 +127,11 @@
     z-index: 1000;
     background-color: var(--mainBg-color);
   }
+  .port__wrap {
+    flex-wrap: nowrap;
+    width: max-content;
+    overflow-x: auto;
+  }
   .port__item {
     width: 400px;
     padding: 40px 30px;

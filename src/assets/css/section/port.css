@@ -72,9 +72,6 @@
 .port__item.p12 {
   background-color: var(--subBg1000);
 }
-.port__item.p13 {
-  background-color: var(--subBg1000);
-}
 .port__item .num {
   font-size: 2rem;
   font-family: var(--mainNum-font);

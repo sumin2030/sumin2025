@@ -36,21 +36,28 @@
   left: 0;
   border-radius: 20px 20px 20px 20px;
   overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 .site__item.s1 {
-  background-color: var(--subBg1100);
+  /* 예시: 작업물1 배경 이미지 */
+  background-image: url("../img/site01.jpg");
   top: 180px;
 }
 .site__item.s2 {
-  background-color: var(--subBg1200);
+  /* 예시: 작업물2 배경 이미지 */
+  background-image: url("../img/site02.jpg");
   top: 180px;
 }
 .site__item.s3 {
-  background-color: var(--subBg1300);
+  /* 예시: 작업물3 배경 이미지 */
+  background-image: url("../img/site03.jpg");
   top: 180px;
 }
 .site__item.s4 {
-  background-color: var(--subBg1400);
+  /* 예시: 작업물4 배경 이미지 */
+  background-image: url("../img/site04.jpg");
   top: 180px;
 }
 .site__item .num {

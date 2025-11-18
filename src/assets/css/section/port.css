@@ -92,7 +92,7 @@
   filter: saturate(0%);
   transition: all 0.3s;
 }
-.port__item .img:hover img {
+.port__item:hover .img img {
   filter: saturate(100%);
 }
 .port__item .title {

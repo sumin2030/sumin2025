@@ -1,13 +1,48 @@
-/* Pretendard 웹폰트 불러오기 */
-@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
-
-/* Pretendard 폰트 클래스 */
-.pretendard {
-    font-family: "Pretendard", sans-serif;
+/* Pretendard 웹폰트 선언 (jsDelivr CDN) */
+@font-face {
+    font-family: "Pretendard";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard-regular.woff2") format("woff2"),
+        url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard-regular.woff") format("woff");
 }
 
-/* 사이트 전체에 적용 (원하면 이 부분만으로도 충분) */
+@font-face {
+    font-family: "Pretendard";
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard-medium.woff2") format("woff2"),
+        url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard-medium.woff") format("woff");
+}
+
+@font-face {
+    font-family: "Pretendard";
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard-semibold.woff2") format("woff2"),
+        url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard-semibold.woff") format("woff");
+}
+
+@font-face {
+    font-family: "Pretendard";
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard-bold.woff2") format("woff2"),
+        url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard-bold.woff") format("woff");
+}
+
+/* 공통 클래스 */
+.pretendard {
+    font-family: "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", "Segoe UI", "Roboto", sans-serif;
+}
+
+/* 사이트 전체 적용 */
 body {
-    font-family: "Pretendard", sans-serif;
+    font-family: "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", "Segoe UI", "Roboto", sans-serif;
+    font-weight: 400;
 }
 

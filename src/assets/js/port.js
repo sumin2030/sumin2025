@@ -23,16 +23,21 @@ export function port() {
         console.warn("Element not found: #port_wrap_area");
         return;
     }
- 
-    gsap.to(horSection, {
-        xPercent: -120 * (horSection.length - 4),
+
+    // 전체 카드가 모두 지나간 뒤에야 아래로 스크롤되도록
+    // 컨테이너 전체 너비 기준으로 스크롤 거리 계산
+    const totalScrollWidth = () =>
+        portWrapArea.scrollWidth - portElement.clientWidth;
+
+    gsap.to(portWrapArea, {
+        x: () => -totalScrollWidth(),
         ease: "none",
         scrollTrigger: {
             trigger: "#port",
             start: "top 56px",
-            end: () => "+=" + portWrapArea.offsetWidth,
-            pin: true,
-            scrub: 0.5,
+            end: () => "+=" + totalScrollWidth(),
+            pin: true,          // port 섹션 고정
+            scrub: 0.5,         // 스크롤과 애니메이션 동기화
             markers: false,
             invalidateOnRefresh: true,
             anticipatePin: 1,

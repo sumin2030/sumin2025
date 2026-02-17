@@ -2,9 +2,41 @@
   width: 100%;
   margin-top: 30vh;
   overflow: hidden;
+  /* 포트폴리오 스크롤 동안 뒤 배경이 같이 안 내려가도록
+     섹션 자체에 배경색을 깔아서 아래 섹션이 보이지 않게 처리 */
+  background-color: var(--mainBg-color);
 }
 .port__inner {
-  padding: 2%;
+  /* 데스크톱 기준 여백: 좌우를 넉넉하게, 위는 약간 띄워서 레이아웃 강조 */
+  padding: 6rem 8vw 4rem;
+}
+.port__header {
+  max-width: 5000px;
+  margin: -70px auto 0.1rem;
+  text-align: left;
+}
+.port__category {
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--black60);
+  margin-bottom: 0.75rem;
+  padding: 1.5rem;
+   padding-top: 2.5rem;
+   padding-right: 2.5rem;
+   padding-bottom: 1.5rem;
+   padding-left: 2.5rem;
+}
+.port__description {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--black80);
+  padding: 2.5rem;
+   padding-top: 2.5rem;
+   padding-right: 2.5rem;
+   padding-bottom: 4.5rem;
+   padding-left: 2.5rem;
+
 }
 .port__title {
   width: 100%;
@@ -26,62 +58,56 @@
 }
 .port__wrap {
   display: flex;
-  flex-wrap: wrap;
-  width: 800%;
+  /* 한 줄로만 나열되도록 하고, 실제 콘텐츠 너비만큼만 차지 */
+  flex-wrap: nowrap;
+  width: max-content;
 }
 .port__item {
-  width: 500px;
-  height: 80vh;
-  background-color: var(--subBg100);
-  padding: 3.5rem;
-  margin-right: 20px;
-  border-radius: 20px 20px 20px 20px;
+  /* 데스크톱 기준 카드 폭/간격 (반응형에서 줄어듦) */
+  width: 420px;
+  height: auto;
+  /* 카드 뒤 흰색 사각형 제거 */
+  background-color: transparent;
+  padding: 2.5rem;
+  /* 카드 사이 간격을 더 줄이기 */
+  margin-right: -40px;
+  border-radius: 0;
   display: flex;
   flex-direction: column;
   position: relative;
 }
-.port__item.p1 {
-  background-color: var(--subBg100);
+/* 마지막 카드는 오른쪽 여백 제거 */
+.port__item:last-child {
+  margin-right: 0;
 }
-.port__item.p2 {
-  background-color: var(--subBg200);
-}
-.port__item.p3 {
-  background-color: var(--subBg300);
-}
-.port__item.p4 {
-  background-color: var(--subBg400);
-}
-.port__item.p5 {
-  background-color: var(--subBg500);
-}
-.port__item.p6 {
-  background-color: var(--subBg600);
-}
-.port__item.p7 {
-  background-color: var(--subBg700);
-}
-.port__item.p8 {
-  background-color: var(--subBg800);
-}
-.port__item.p9 {
-  background-color: var(--subBg900);
-}
-.port__item.p11 {
-  background-color: var(--subBg1000);
-}
+/* 카드별 개별 배경색도 전부 제거 */
+.port__item.p1,
+.port__item.p2,
+.port__item.p3,
+.port__item.p4,
+.port__item.p5,
+.port__item.p6,
+.port__item.p7,
+.port__item.p8,
+.port__item.p9,
+.port__item.p10,
+.port__item.p11,
 .port__item.p12 {
-  background-color: var(--subBg1000);
+  background-color: transparent;
 }
 .port__item .num {
-  font-size: 2rem;
+  /* 숫자 크기 1.5rem으로 조정 */
+  font-size: 1.5rem;
   font-family: var(--mainNum-font);
   position: relative;
   z-index: 2;
+  /* 숫자와 이미지 사이 간격 추가 */
+  margin-bottom: 1rem;
 }
 .port__item .img {
   display: block;
-  margin-top: -20px;
+  /* 숫자와 너무 붙지 않도록 기본 간격 유지 */
+  margin-top: 0;
   transition: margin-top 0.3s;
   position: relative;
   z-index: 1;
@@ -91,11 +117,18 @@
 }
 .port__item .img img {
   border-radius: 5px;
-  filter: saturate(0%);
-  transition: all 0.3s;
+  /* 기본 상태에서 원래 색 유지 */
+  filter: none;
+  width: 100%;
+  height: auto;
+  max-height: 340px;
+  object-fit: cover;
+  transform: translateY(0) scale(1);
+  transition: transform 0.3s ease;
 }
 .port__item:hover .img img {
-  filter: saturate(100%);
+  /* 호버 시 살짝 커지면서 위로 이동 */
+  transform: translateY(-5px) scale(1.05);
 }
 .port__item .title {
   font-size: 1.5rem;
@@ -135,10 +168,13 @@
     overflow-x: auto;
   }
   .port__item {
-    width: 400px;
-    padding: 40px 30px;
+    /* 화면 너비 기준으로 카드 폭/간격 줄이기 */
+    width: 80vw;
+    padding: 24px 20px;
     height: auto;
-    border-radius: 15px 15px 15px 15px;
+    margin-right: 4px;
+    /* 모바일에서도 카드 라운드 제거 */
+    border-radius: 0;
   }
 }
  

@@ -12,7 +12,7 @@
 }
 .port__header {
   max-width: 5000px;
-  margin: -70px auto 0.1rem;
+  margin: -140px auto 0.1rem;
   text-align: left;
 }
 .port__category {
@@ -31,10 +31,10 @@
   font-size: 0.95rem;
   line-height: 1.7;
   color: var(--black80);
-  padding: 2.5rem;
-   padding-top: 2.5rem;
+  padding: 1.5rem;
+   padding-top: 1.5rem;
    padding-right: 2.5rem;
-   padding-bottom: 4.5rem;
+   padding-bottom: 8.5rem;
    padding-left: 2.5rem;
 
 }
@@ -121,7 +121,7 @@
   filter: none;
   width: 100%;
   height: auto;
-  max-height: 340px;
+  max-height: 440px;
   object-fit: cover;
   transform: translateY(0) scale(1);
   transition: transform 0.3s ease;

@@ -8,7 +8,7 @@
 }
 .port__inner {
   /* 데스크톱 기준 여백: 좌우를 넉넉하게, 위는 약간 띄워서 레이아웃 강조 */
-  padding: 6rem 8vw 4rem;
+  padding: 6rem 8vw 6rem;
 }
 .port__header {
   max-width: 5000px;
@@ -16,14 +16,14 @@
   text-align: left;
 }
 .port__category {
-  font-size: 0.85rem;
+  font-size: 0.99rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--black60);
   margin-bottom: 0.75rem;
   padding: 1.5rem;
    padding-top: 2.5rem;
-   padding-right: 2.5rem;
+   padding-right: 0.5rem;
    padding-bottom: 1.5rem;
    padding-left: 2.5rem;
 }
@@ -78,7 +78,7 @@
 }
 /* 마지막 카드는 오른쪽 여백 제거 */
 .port__item:last-child {
-  margin-right: 0;
+  margin-right: 100px;
 }
 /* 카드별 개별 배경색도 전부 제거 */
 .port__item.p1,
@@ -111,6 +111,7 @@
   transition: margin-top 0.3s;
   position: relative;
   z-index: 1;
+  margin-bottom: 1rem;
 }
 .port__item:hover .img {
   margin-top: 0;

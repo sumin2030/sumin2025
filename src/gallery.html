@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이미지 갤러리</title>
+    <link rel="stylesheet" href="style.css"> 
+</head>
+<body>
+
+    <section id="imageViewer">
+        <div class="viewer__inner">
+            
+            <div class="viewer__header">
+                <button class="back-btn" onclick="location.href='index.html'">
+                    ← 메인으로 돌아가기
+                </button>
+                <h2 class="viewer__title">나의 포트폴리오 갤러리</h2>
+            </div>
+
+            <div class="viewer__content">
+                
+                <div class="image-item">
+                    <div class="image-container">
+                        <img src="img1.jpg" alt="이미지 1">
+                    </div>
+                    <div class="image-info">
+                        <div class="image-description">
+                            <h3>첫 번째 작품 제목</h3>
+                            <p>작품에 대한 상세 설명을 여기에 적으세요.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="image-item">
+                    <div class="image-container">
+                        <img src="img2.jpg" alt="이미지 2">
+                    </div>
+                    <div class="image-info">
+                        <div class="image-description">
+                            <h3>두 번째 작품 제목</h3>
+                            <p>가로로 화면에 꽉 차며 세로로 나열됩니다.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>

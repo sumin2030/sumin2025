@@ -16,7 +16,7 @@
   text-align: left;
 }
 .port__category {
-  font-size: 0.99rem;
+  font-size: 1.19vw;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--black60);
@@ -28,7 +28,7 @@
    padding-left: 2.5rem;
 }
 .port__description {
-  font-size: 0.95rem;
+  font-size: 1.05vw;
   line-height: 1.7;
   color: var(--black80);
   padding: 1.5rem;

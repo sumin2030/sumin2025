@@ -4,13 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>이미지 갤러리</title>
-    <link rel="stylesheet" href="style.css"> 
+    
+    <link rel="stylesheet" href="./src/assets/css/setting/vars.css">
+    <link rel="stylesheet" href="./src/assets/css/setting/reset.css">
+    <link rel="stylesheet" href="./src/assets/css/setting/fonts.css">
+    <link rel="stylesheet" href="./image-viewer.css">
 </head>
 <body>
 
     <section id="imageViewer">
         <div class="viewer__inner">
-            
             <div class="viewer__header">
                 <button class="back-btn" onclick="location.href='index.html'">
                     ← 메인으로 돌아가기
@@ -19,34 +22,115 @@
             </div>
 
             <div class="viewer__content">
-                
                 <div class="image-item">
                     <div class="image-container">
-                        <img src="img1.jpg" alt="이미지 1">
-                    </div>
+                        </div>
                     <div class="image-info">
                         <div class="image-description">
-                            <h3>첫 번째 작품 제목</h3>
-                            <p>작품에 대한 상세 설명을 여기에 적으세요.</p>
+                            <h3 class="dynamic-title">제목 로딩 중...</h3>
+                            <p class="dynamic-desc">설명 로딩 중...</p>
                         </div>
                     </div>
                 </div>
-
-                <div class="image-item">
-                    <div class="image-container">
-                        <img src="img2.jpg" alt="이미지 2">
-                    </div>
-                    <div class="image-info">
-                        <div class="image-description">
-                            <h3>두 번째 작품 제목</h3>
-                            <p>가로로 화면에 꽉 차며 세로로 나열됩니다.</p>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
     </section>
 
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const id = params.get('id');
+
+        const galleryData = {
+            "1": {
+                title: "Orb (오브)",
+             // 폴더가 중복되어 있다면 img/img/ 로 적어주어야 합니다.
+                images: [
+                "./src/assets/img/img/Frame34.jpg", // 파일명에서 공백을 지우고 이렇게 적어보세요.
+                "./src/assets/img/img/port_inner01.jpg" 
+                ],
+                desc: "차 소믈리에를 위한 미니멀한 디자인의 오브제입니다."
+            },
+            "2": {
+                title: "Wave",
+                images: ["./src/assets/img/port02.jpg"],
+                desc: "부드러운 곡선의 미학을 담은 가구 디자인 프로젝트입니다."
+            },
+            "3": {
+                title: "Flo",
+                images: ["./src/assets/img/port03.jpg"],
+                desc: "자연스러운 흐름과 기능성을 결합한 제품 디자인입니다."
+            },
+            "4": {
+                title: "연화 (Incense Holder)",
+                images: ["./src/assets/img/port04.jpg"],
+                desc: "동양적인 무드를 현대적으로 재해석한 인센스 홀더 디자인입니다."
+            },
+            "5": {
+                title: "Bug Free",
+                images: ["./src/assets/img/port05.jpg"],
+                desc: "해충으로부터 자유로운 쾌적한 환경을 위한 디자인 솔루션입니다."
+            },
+            "6": {
+                title: "Side Table",
+                images: ["./src/assets/img/port06.jpg"],
+                desc: "공간의 효율성을 높여주는 미니멀한 사이드 테이블입니다."
+            },
+            "7": {
+                title: "Fake Chair",
+                images: ["./src/assets/img/port07.jpg"],
+                desc: "시각적 유희와 가구의 본질을 탐구한 디자인 체어입니다."
+            },
+            "8": {
+                title: "Mrow",
+                images: ["./src/assets/img/port08.jpg"],
+                desc: "반려동물과 인간의 공존을 위한 오브제 디자인입니다."
+            },
+            "9": {
+                title: "Amiro",
+                images: ["./src/assets/img/port09.jpg"],
+                desc: "세련된 감각을 더해주는 인테리어 소품 디자인입니다."
+            },
+            "10": {
+                title: "Custom Table A",
+                images: ["./src/assets/img/port10.jpg"],
+                desc: "사용자의 라이프스타일에 맞춘 커스텀 테이블입니다."
+            },
+            "11": {
+                title: "Custom Table B",
+                images: ["./src/assets/img/port11.jpg"],
+                desc: "다양한 활용도를 고려하여 설계된 테이블 프로젝트입니다."
+            },
+            "12": {
+                title: "Custom Table C",
+                images: ["./src/assets/img/port12.jpg"],
+                desc: "미적 요소와 실용성을 모두 잡은 가구 디자인입니다."
+            }
+        };
+
+        if (id && galleryData[id]) {
+            // 1. 텍스트 정보 업데이트
+            document.querySelector('.viewer__title').innerText = galleryData[id].title;
+            document.querySelector('.dynamic-title').innerText = galleryData[id].title;
+            document.querySelector('.dynamic-desc').innerText = galleryData[id].desc;
+
+            // 2. 이미지 컨테이너 작업
+            const imageContainer = document.querySelector('.image-container');
+            imageContainer.innerHTML = ""; // 초기화
+
+            // 배열에 있는 모든 이미지를 순차적으로 생성하여 추가
+            galleryData[id].images.forEach(imgSrc => {
+                const newImg = document.createElement('img');
+                newImg.src = imgSrc;
+                newImg.alt = galleryData[id].title;
+                
+                // CSS가 적용되도록 스타일 설정 (image-viewer.css에 설정해도 됨)
+                newImg.style.display = "block";
+                newImg.style.width = "100%";
+                newImg.style.marginBottom = "40px"; 
+                
+                imageContainer.appendChild(newImg);
+            });
+        }
+    </script>
 </body>
 </html>

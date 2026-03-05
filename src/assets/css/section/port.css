@@ -12,31 +12,52 @@
 }
 .port__header {
   max-width: 5000px;
-  margin: -140px auto 0.1rem;
+  margin: -20px auto 0.1rem;
   text-align: left;
 }
+/* 1. 카테고리 (작은 글씨) */
 .port__category {
+  /* [기본 설정: 데스크톱] */
+  display: block !important;      /* 요소가 숨겨지는 것 방지 */
+  position: relative !important;  /* 다른 요소 뒤로 숨지 않게 설정 */
+  z-index: 10 !important;         /* 쌓임 순서 상단 배치 */
+  width: 100% !important;
+  
   font-size: 1.19vw;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--black60);
-  margin-bottom: 0.75rem;
-  padding: 1.5rem;
-   padding-top: 2.5rem;
-   padding-right: 0.5rem;
-   padding-bottom: 1.5rem;
-   padding-left: 2.5rem;
+  color: var(--black60);          /* 회색 계열 색상 확인 */
+  
+  padding: 2.5rem 0.5rem 1.5rem 2.5rem;
+  box-sizing: border-box;
+
+  /* [반응형 설정: 모바일 (768px 이하)] */
+  @media (max-width: 768px) {
+    font-size: 14px !important;    /* 모바일 가독성 확보 */
+    padding: 2rem 1.5rem 1rem 1.5rem !important; /* 왼쪽 여백 축소 */
+    color: #666 !important;        /* 모바일에서 대비가 낮다면 더 진하게 설정 */
+    height: auto !important;       /* 높이 제한 해제 */
+    overflow: visible !important;  /* 잘림 방지 */
+  }
 }
+
+/* 2. 설명글 (본문) */
 .port__description {
-  font-size: 1.05vw;
+  display: block;
+  width: 100%;
+  font-size: 1.05vw;           /* 데스크톱 기본값 */
   line-height: 1.7;
   color: var(--black80);
-  padding: 1.5rem;
-   padding-top: 1.5rem;
-   padding-right: 2.5rem;
-   padding-bottom: 8.5rem;
-   padding-left: 2.5rem;
+  padding: 0 2.5rem 8.5rem 2.5rem;
+  box-sizing: border-box;
 
+  /* 모바일 최적화 (768px 이하) */
+  @media (max-width: 768px) {
+    font-size: 16px !important; /* 읽기 편한 크기로 고정 */
+    padding: 0 1.5rem 4rem 1.5rem !important;
+    line-height: 1.6;
+    word-break: keep-all;       /* 한글 단어가 어색하게 깨지는 것 방지 */
+  }
 }
 .port__title {
   width: 100%;

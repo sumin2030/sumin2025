@@ -8,7 +8,7 @@
 }
 .port__inner {
   /* 데스크톱 기준 여백: 좌우를 넉넉하게, 위는 약간 띄워서 레이아웃 강조 */
-  padding: 6rem 8vw 6rem;
+  padding: 0rem 8vw 6rem;
 }
 .port__header {
   max-width: 5000px;

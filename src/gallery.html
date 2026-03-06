@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>이미지 갤러리</title>
+    <title>이미지 갤러리 | Portfolio</title>
     
-    <link rel="stylesheet" href="./src/assets/css/setting/vars.css">
-    <link rel="stylesheet" href="./src/assets/css/setting/reset.css">
-    <link rel="stylesheet" href="./src/assets/css/setting/fonts.css">
+    <link rel="stylesheet" href="/src/assets/css/setting/vars.css">
+    <link rel="stylesheet" href="/src/assets/css/setting/reset.css">
+    <link rel="stylesheet" href="/src/assets/css/setting/fonts.css">
     <link rel="stylesheet" href="./image-viewer.css">
 </head>
 <body>
@@ -40,71 +40,73 @@
         const params = new URLSearchParams(window.location.search);
         const id = params.get('id');
     
+        // Vite 환경에서는 /src/assets/... 경로를 사용하는 것이 일반적입니다.
+        // 파일명에 공백이 있는 경우(%20 자동변환 방지)를 위해 이름을 붙여서 작성하는 것을 권장합니다.
         const galleryData = {
             "1": {
                 title: "Orb (오브)",
-                images: [ "assets/img/Frame36.jpg"],
-                        // 중요: 파일 이름을 Frame34.jpg로 바꾸고 아래 경로를 사용하세요
+                images: ["assets/img/Frame36.jpg"],
                 desc: "차 소믈리에를 위한 미니멀한 디자인의 오브제입니다. 따뜻한 조명과 함께 차분한 리추얼 분위기를 연출합니다."
             },
             "2": {
                 title: "Wave",
-                images: [ "assets/img/Frame37.jpg"],
+                images: ["assets/img/Frame37.jpg"],
                 desc: "부드러운 곡선의 미학을 담은 가구 디자인 프로젝트입니다."
             },
             "3": {
                 title: "Flo",
-                images: [ "assets/img/Frame34.jpg"],
+                images: ["assets/img/Frame34.jpg"],
                 desc: "자연스러운 흐름과 기능성을 결합한 제품 디자인입니다."
             },
             "4": {
                 title: "연화 (Incense Holder)",
-                images: [ "assets/img/Frame 37.jpg"],
+                images: ["assets/img/Frame37.jpg"], // 공백 제거 권장
                 desc: "동양적인 무드를 현대적으로 재해석한 인센스 홀더 디자인입니다."
             },
             "5": {
                 title: "Bug Free",
-                images: [ "assets/img/Frame35.jpg"],
+                images: ["assets/img/Frame35.jpg"],
                 desc: "해충으로부터 자유로운 쾌적한 환경을 위한 디자인 솔루션입니다."
             },
             "6": {
                 title: "Side Table",
-                images: [ "assets/img/Frame 36.jpg"],
+                images: ["assets/img/Frame36.jpg"], // 공백 제거 권장
                 desc: "공간의 효율성을 높여주는 미니멀한 사이드 테이블입니다."
             },
             "7": {
                 title: "Fake Chair",
-                images: [ "assets/img/Frame 40.jpg"],
+                images: ["assets/img/Frame40.jpg"], // 공백 제거 권장
                 desc: "시각적 유희와 가구의 본질을 탐구한 디자인 체어입니다."
             },
             "8": {
                 title: "Mrow",
-                images: [ "assets/img/Frame 37.jpg"],
+                images: ["assets/img/Frame37.jpg"], // 공백 제거 권장
                 desc: "반려동물과 인간의 공존을 위한 오브제 디자인입니다."
             },
             "9": {
                 title: "Amiro",
-                images: [ "assets/img/Frame 42.jpg"],
+                images: ["assets/img/Frame42.jpg"], // 공백 제거 권장
                 desc: "세련된 감각을 더해주는 인테리어 소품 디자인입니다."
             },
             "10": {
                 title: "Custom Table A",
-                images: [ "assets/img/Frame 43.jpg"],
+                images: ["assets/img/Frame43.jpg"], // 공백 제거 권장
                 desc: "사용자의 라이프스타일에 맞춘 커스텀 테이블입니다."
             },
             "11": {
                 title: "Custom Table B",
-                images: [ "assets/img/Frame 39.jpg"],
+                images: ["assets/img/Frame39.jpg"], // 공백 제거 권장
                 desc: "다양한 활용도를 고려하여 설계된 테이블 프로젝트입니다."
             },
             "12": {
                 title: "Custom Table C",
-                images: [ "assets/img/Frame 38.jpg"],
+                images: ["assets/img/Frame38.jpg"], // 공백 제거 권장
                 desc: "미적 요소와 실용성을 모두 잡은 가구 디자인입니다."
             }
-        }; // 객체를 여기서 정확히 닫아주어야 71번 오류가 안 납니다.
+        }; 
     
         if (id && galleryData[id]) {
+            // 제목 및 설명 업데이트
             document.querySelector('.viewer__title').innerText = galleryData[id].title;
             document.querySelector('.dynamic-title').innerText = galleryData[id].title;
             document.querySelector('.dynamic-desc').innerText = galleryData[id].desc;
@@ -112,6 +114,7 @@
             const imageContainer = document.querySelector('.image-container');
             imageContainer.innerHTML = ""; 
     
+            // 이미지 동적 생성 및 스타일 적용
             galleryData[id].images.forEach(imgSrc => {
                 const newImg = document.createElement('img');
                 newImg.src = imgSrc;
@@ -119,8 +122,18 @@
                 newImg.style.display = "block";
                 newImg.style.width = "100%";
                 newImg.style.marginBottom = "40px"; 
+                
+                // 이미지 로드 실패 시 에러 메시지 출력 (디버깅용)
+                newImg.onerror = () => {
+                    console.error(`이미지를 찾을 수 없습니다: ${imgSrc}`);
+                };
+
                 imageContainer.appendChild(newImg);
             });
+        } else {
+            // 잘못된 접근 시 처리
+            document.querySelector('.dynamic-title').innerText = "프로젝트를 찾을 수 없습니다.";
+            document.querySelector('.dynamic-desc').innerText = "URL을 확인해 주세요.";
         }
     </script>
 </body>

@@ -51,7 +51,7 @@
   color: var(--black80);
   padding: 2.5rem 0.5rem 8.5rem 2.5rem;
   box-sizing: border-box;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
 
   /* 모바일 최적화 (768px 이하) */
   @media (max-width: 768px) {
@@ -88,10 +88,10 @@
 .port__item {
   /* 데스크톱 기준 카드 폭/간격 (반응형에서 줄어듦) */
   width: 300px;
-  height: auto;
+  height: 401px;
   /* 카드 뒤 흰색 사각형 제거 */
   background-color: transparent;
-  padding: 2.5rem;
+  padding: 2.6rem;
   /* 카드 사이 간격을 더 줄이기 */
   margin-right: -40px;
   border-radius: 0;
@@ -102,11 +102,11 @@
 /* 마지막 카드는 오른쪽 여백 제거 */
 .port__item:last-child {
 /* 데스크톱 기준 카드 폭/간격 (반응형에서 줄어듦) */
-width: 300px;
-height: auto;
+width: 330px;
+height: 441px;
 /* 카드 뒤 흰색 사각형 제거 */
 background-color: transparent;
-padding: 2.5rem;
+padding: 2.6rem;
 /* 카드 사이 간격을 더 줄이기 */
 margin-right: 60px;
 border-radius: 0;
@@ -131,7 +131,7 @@ position: relative;
 }
 .port__item .num {
   /* 숫자 크기 1.5rem으로 조정 */
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-family: var(--mainNum-font);
   position: relative;
   z-index: 2;

@@ -1,79 +1,88 @@
 .skill__inner {
-  padding: 96px;
-  display: flex;
-  justify-content: space-between;
-  gap: 5%;
-}
-
-
-
-.skill__title em {
-  font-size: 1.5rem;
-  font-weight: 400;
-  line-height: 2;
-  display: block;
+  padding: 96px; /* 전체 섹션의 좌우 여백 유지 */
+  display: block; /* 타이틀이 빠졌으므로 블록 구조로 변경 */
 }
 
 .skill__desc {
-  width: 65%; /* 설명+영상이 들어갈 넓은 공간 확보 */
+  width: 100%; /* 화면 전체 너비 사용 */
 }
 
-/* ★ 가로 배치를 만드는 핵심 클래스 ★ */
+/* ★ 글은 왼쪽 끝, 영상은 오른쪽 끝 정렬 ★ */
 .skill__item {
   display: flex;
-  flex-direction: row; /* 가로 정렬 */
+  flex-direction: row;
+  justify-content: space-between; /* 글과 영상을 양 끝으로 밀어냄 */
   align-items: flex-start;
-  justify-content: space-between;
-  gap: 30px;
-  margin-bottom: 15vh;
+  margin-bottom: 25vh; /* 섹션 사이 간격을 더 넉넉하게 조절 */
+  width: 100%;
 }
 
 .skill__item .text {
-  flex: 1; /* 글자 영역 너비 비율 */
+  width: 40%; /* 글자 영역 너비 (디자인에 따라 조절 가능) */
 }
 
 .skill__item .text h3 {
-  font-size: 1.5rem;
+  font-size: 1.8rem; /* 타이틀이 없으므로 소제목을 조금 더 강조 */
   font-weight: 700;
-  margin-bottom: 1vw;
+  margin-bottom: 20px;
+  font-family: var(--mainKor-font);
 }
 
 .skill__item .text p {
-  font-size: 1vw;
-  line-height: 1.6;
+  font-size: 1.1vw;
+  line-height: 1.8;
   color: var(--black200);
   word-break: keep-all;
 }
 
 .skill__item .video {
-  flex: 1.2; /* 영상 영역 너비 비율 (글보다 살짝 넓게) */
-  border-radius: 15px;
+  width: 50%; /* 영상 영역 너비 (글보다 조금 더 크게 설정) */
+  border-radius: 20px; /* Orb 프로젝트 무드에 맞춘 부드러운 곡률 */
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  box-shadow: 0 15px 50px rgba(0,0,0,0.1);
 }
 
 .skill__item .video video {
   width: 100%;
   display: block;
+  object-fit: cover;
 }
 
-/* 모바일 대응 */
+/* 반응형 설정 */
+@media (max-width: 1024px) {
+  .skill__inner {
+    padding: 60px 40px;
+  }
+  
+  .skill__item .text {
+    width: 45%;
+  }
+  
+  .skill__item .video {
+    width: 50%;
+  }
+}
+
 @media (max-width: 800px) {
   .skill__inner {
-    flex-direction: column;
     padding: 40px 20px;
   }
-  .skill__title {
-    width: 100%;
-    position: relative;
-    top: 0;
-    margin-bottom: 40px;
-  }
-  .skill__desc {
-    width: 100%;
-  }
+  
   .skill__item {
-    flex-direction: column; /* 모바일은 다시 세로로 */
-    margin-bottom: 60px;
+    flex-direction: column; /* 모바일은 다시 세로 배치 */
+    margin-bottom: 80px;
+  }
+  
+  .skill__item .text {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+  
+  .skill__item .text h3 {
+    font-size: 1.5rem;
+  }
+  
+  .skill__item .video {
+    width: 100%; /* 모바일은 가로 꽉 차게 */
   }
 }

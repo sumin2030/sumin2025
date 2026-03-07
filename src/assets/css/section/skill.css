@@ -5,19 +5,7 @@
   gap: 5%;
 }
 
-.skill__title {
-  position: sticky;
-  top: 70px;
-  left: 0;
-  width: 30%; /* 제목 너비 고정 */
-  height: fit-content;
-  font-size: 2.5vw;
-  font-weight: 900;
-  font-family: var(--mainKor-font);
-  text-transform: uppercase;
-  color: var(--black100);
-  border-bottom: 0.2vw solid var(--black100);
-}
+
 
 .skill__title em {
   font-size: 1.5rem;

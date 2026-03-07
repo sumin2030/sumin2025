@@ -1,28 +1,28 @@
 .skill__inner {
-  padding: 96px; /* 전체 섹션의 좌우 여백 유지 */
-  display: block; /* 타이틀이 빠졌으므로 블록 구조로 변경 */
+  padding: 96px; 
+  display: block; 
 }
 
 .skill__desc {
-  width: 100%; /* 화면 전체 너비 사용 */
+  width: 100%; 
 }
 
-/* ★ 글은 왼쪽 끝, 영상은 오른쪽 끝 정렬 ★ */
+/* ★ 글과 영상을 양 끝으로 배치 ★ */
 .skill__item {
   display: flex;
   flex-direction: row;
-  justify-content: space-between; /* 글과 영상을 양 끝으로 밀어냄 */
-  align-items: flex-start;
-  margin-bottom: 25vh; /* 섹션 사이 간격을 더 넉넉하게 조절 */
+  justify-content: space-between; 
+  align-items: flex-start; 
+  margin-bottom: 25vh; 
   width: 100%;
 }
 
 .skill__item .text {
-  width: 40%; /* 글자 영역 너비 (디자인에 따라 조절 가능) */
+  width: 40%; 
 }
 
 .skill__item .text h3 {
-  font-size: 1.8rem; /* 타이틀이 없으므로 소제목을 조금 더 강조 */
+  font-size: 1.8rem;
   font-weight: 700;
   margin-bottom: 20px;
   font-family: var(--mainKor-font);
@@ -35,54 +35,40 @@
   word-break: keep-all;
 }
 
+/* ★ 영상 원본 유지 + 검은 라인 완전 제거 ★ */
 .skill__item .video {
-  width: 50%; /* 영상 영역 너비 (글보다 조금 더 크게 설정) */
-  border-radius: 20px; /* Orb 프로젝트 무드에 맞춘 부드러운 곡률 */
+  width: 50%; 
+  border-radius: 20px; 
   overflow: hidden;
   box-shadow: 0 15px 50px rgba(0,0,0,0.1);
+  /* 영상 뒤에 남는 미세한 틈을 배경색으로 가립니다 */
+  background-color: #f9f9f9; /* 사이트 배경색과 똑같이 맞추는 것이 가장 중요합니다 */
 }
 
 .skill__item .video video {
-  width: 100%;
+  width: 101%; /* ★ 100%보다 아주 살짝 크게 설정하여 우측 틈을 강제로 덮습니다 */
+  height: auto; /* 원본 세로 비율 유지 */
   display: block;
-  object-fit: cover;
+  /* 영상 사이즈를 강제로 조절하는 속성들을 모두 제거하여 원본을 유지합니다 */
+  object-fit: fill; 
+  margin-left: -0.5%; /* 살짝 커진 너비를 왼쪽으로 밀어 균형을 맞춥니다 */
 }
 
-/* 반응형 설정 */
-@media (max-width: 1024px) {
-  .skill__inner {
-    padding: 60px 40px;
-  }
-  
-  .skill__item .text {
-    width: 45%;
-  }
-  
-  .skill__item .video {
-    width: 50%;
-  }
-}
-
+/* 모바일 대응 */
 @media (max-width: 800px) {
   .skill__inner {
     padding: 40px 20px;
   }
-  
   .skill__item {
-    flex-direction: column; /* 모바일은 다시 세로 배치 */
+    flex-direction: column;
     margin-bottom: 80px;
   }
-  
-  .skill__item .text {
-    width: 100%;
-    margin-bottom: 30px;
-  }
-  
-  .skill__item .text h3 {
-    font-size: 1.5rem;
-  }
-  
+  .skill__item .text, 
   .skill__item .video {
-    width: 100%; /* 모바일은 가로 꽉 차게 */
+    width: 100%;
+  }
+  .skill__item .video video {
+    width: 100%;
+    margin-left: 0;
   }
 }

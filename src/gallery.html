@@ -9,6 +9,25 @@
     <link rel="stylesheet" href="/src/assets/css/setting/reset.css">
     <link rel="stylesheet" href="/src/assets/css/setting/fonts.css">
     <link rel="stylesheet" href="./image-viewer.css">
+    <style>
+        /* CSS 파일 외에 추가로 확인해야 할 핵심 스타일 */
+        html, body {
+            height: auto !important; /* 높이 고정 해제 */
+            overflow-y: auto !important; /* 세로 스크롤 강제 허용 */
+            margin: 0;
+            padding: 0;
+        }
+        #imageViewer {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .viewer__inner {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
 </head>
 <body>
 
@@ -16,15 +35,15 @@
         <div class="viewer__inner">
             <div class="viewer__header">
                 <button class="back-btn" onclick="location.href='index.html'">
-                    ←back
+                    &larr; back
                 </button>
                 <h2 class="viewer__title">나의 포트폴리오 갤러리</h2>
             </div>
 
             <div class="viewer__content">
                 <div class="image-item">
-                    <div class="image-container">
-                        </div>
+                    <div class="image-container"></div>
+                    
                     <div class="image-info">
                         <div class="image-description">
                             <h3 class="dynamic-title">제목 로딩 중...</h3>
@@ -40,13 +59,11 @@
         const params = new URLSearchParams(window.location.search);
         const id = params.get('id');
     
-        // Vite 환경에서는 /src/assets/... 경로를 사용하는 것이 일반적입니다.
-        // 파일명에 공백이 있는 경우(%20 자동변환 방지)를 위해 이름을 붙여서 작성하는 것을 권장합니다.
         const galleryData = {
             "1": {
                 title: "Orb (오브)",
                 desc: "차 소믈리에를 위한 미니멀한 디자인의 오브제입니다. 따뜻한 조명과 함께 차분한 리추얼 분위기를 연출합니다.",
-                images: ["assets/img/port.sub1.webp"],
+                images: ["assets/img/port.sub1.webp"], // Vite 경로 최적화
             },
             "2": {
                 title: "Wave",
@@ -61,7 +78,7 @@
             "4": {
                 title: "연화 (Incense Holder)",
                 desc: "동양적인 무드를 현대적으로 재해석한 인센스 홀더 디자인입니다.",
-                images: ["assets/img/port.sub4.webp"], // 공백 제거 권장
+                images: ["assets/img/port.sub4.webp"],
             },
             "5": {
                 title: "Bug Free",
@@ -71,42 +88,41 @@
             "6": {
                 title: "Side Table",
                 desc: "공간의 효율성을 높여주는 미니멀한 사이드 테이블입니다.",
-                images: ["assets/img/port.su6.webp"], // 공백 제거 권장
+                images: ["assets/img/port.su6.webp"],
             },
             "7": {
                 title: "Fake Chair",
                 desc: "시각적 유희와 가구의 본질을 탐구한 디자인 체어입니다.",
-                images: ["assets/img/port.sub7.webp"], // 공백 제거 권장
+                images: ["assets/img/port.sub7.webp"],
             },
             "8": {
                 title: "Mrow",
                 desc: "반려동물과 인간의 공존을 위한 오브제 디자인입니다.",
-                images: ["assets/img/port.sub8.webp"], // 공백 제거 권장
+                images: ["assets/img/port.sub8.webp"],
             },
             "9": {
-                title: "Amiro",// 공백 제거 권장
+                title: "Amiro",
                 desc: "세련된 감각을 더해주는 인테리어 소품 디자인입니다.",
                 images: ["assets/img/port.sub9.webp"], 
             },
             "10": {
-                title: "Custom Table A",// 공백 제거 권장
+                title: "Custom Table A",
                 desc: "사용자의 라이프스타일에 맞춘 커스텀 테이블입니다.",
                 images: ["assets/img/port.sub10.webp"], 
             },
             "11": {
-                title: "Custom Table B", // 공백 제거 권장
+                title: "Custom Table B",
                 desc: "다양한 활용도를 고려하여 설계된 테이블 프로젝트입니다.",
                 images: ["assets/img/port.sub11.webp"],
             },
             "12": {
                 title: "Custom Table C",
                 desc: "미적 요소와 실용성을 모두 잡은 가구 디자인입니다.",
-                images: ["assets/img/port.sub12.webp"], // 공백 제거 권장
+                images: ["assets/img/port.sub12.webp"],
             }
         }; 
     
         if (id && galleryData[id]) {
-            // 제목 및 설명 업데이트
             document.querySelector('.viewer__title').innerText = galleryData[id].title;
             document.querySelector('.dynamic-title').innerText = galleryData[id].title;
             document.querySelector('.dynamic-desc').innerText = galleryData[id].desc;
@@ -114,24 +130,20 @@
             const imageContainer = document.querySelector('.image-container');
             imageContainer.innerHTML = ""; 
     
-            // 이미지 동적 생성 및 스타일 적용
             galleryData[id].images.forEach(imgSrc => {
                 const newImg = document.createElement('img');
                 newImg.src = imgSrc;
                 newImg.alt = galleryData[id].title;
-                newImg.style.display = "block";
-                newImg.style.width = "100%";
-                newImg.style.marginBottom = "40px"; 
                 
-                // 이미지 로드 실패 시 에러 메시지 출력 (디버깅용)
-                newImg.onerror = () => {
-                    console.error(`이미지를 찾을 수 없습니다: ${imgSrc}`);
-                };
-
+                // 인라인 스타일로 세로 잘림 방지 강제 적용
+                newImg.style.width = "100%";
+                newImg.style.height = "auto"; 
+                newImg.style.display = "block";
+                newImg.style.marginBottom = "0"; // CSS에서 제어하도록 0으로 설정
+                
                 imageContainer.appendChild(newImg);
             });
         } else {
-            // 잘못된 접근 시 처리
             document.querySelector('.dynamic-title').innerText = "프로젝트를 찾을 수 없습니다.";
             document.querySelector('.dynamic-desc').innerText = "URL을 확인해 주세요.";
         }

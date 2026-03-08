@@ -29,7 +29,7 @@
 }
 
 .skill__item .text p {
-  font-size: 1.1vw;
+  font-size: 1.1rem;
   line-height: 1.8;
   color: var(--black200);
   word-break: keep-all;
@@ -37,8 +37,8 @@
 
 /* ★ 영상 원본 유지 + 검은 라인 완전 제거 ★ */
 .skill__item .video {
-  width: 50%; 
-  border-radius: 20px; 
+  width: 40%; 
+  border-radius: 0px; 
   overflow: hidden;
   box-shadow: 0 15px 50px rgba(0,0,0,0.1);
   /* 영상 뒤에 남는 미세한 틈을 배경색으로 가립니다 */

@@ -151,7 +151,7 @@ position: relative;
   margin-top: 0;
 }
 .port__item .img img {
-  border-radius: 5px;
+  border-radius: 0px;
   /* 기본 상태에서 원래 색 유지 */
   filter: none;
   width: 100%;

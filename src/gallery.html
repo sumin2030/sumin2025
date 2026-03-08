@@ -9,23 +9,26 @@
     <link rel="stylesheet" href="/src/assets/css/setting/reset.css">
     <link rel="stylesheet" href="/src/assets/css/setting/fonts.css">
     <link rel="stylesheet" href="./image-viewer.css">
+    
     <style>
-        /* CSS 파일 외에 추가로 확인해야 할 핵심 스타일 */
+        /* CSS 파일 외에 레이아웃 오류 방지를 위한 핵심 스타일 */
         html, body {
-            height: auto !important; /* 높이 고정 해제 */
-            overflow-y: auto !important; /* 세로 스크롤 강제 허용 */
+            /* 상위 요소에서 높이를 고정하면 내용이 잘리므로 auto로 설정 */
+            height: auto !important; 
+            /* 내용이 길어질 경우를 대비해 세로 스크롤을 강제로 허용 */
+            overflow-y: auto !important; 
             margin: 0;
             padding: 0;
         }
         #imageViewer {
             width: 100%;
-            height: auto;
+            height: auto; /* 내용(이미지)에 따라 높이가 늘어나도록 설정 */
             display: block;
         }
         .viewer__inner {
             width: 100%;
             display: flex;
-            flex-direction: column;
+            flex-direction: column; /* 헤더-콘텐츠-설명을 세로로 나열 */
         }
     </style>
 </head>
@@ -56,14 +59,16 @@
     </section>
 
     <script>
+        // 1. URL 파라미터에서 'id' 값을 가져옴 (예: gallery.html?id=1)
         const params = new URLSearchParams(window.location.search);
         const id = params.get('id');
     
+        // 2. 각 프로젝트별 데이터 정의 (제목, 설명, 이미지 경로)
         const galleryData = {
             "1": {
                 title: "Orb (오브)",
                 desc: "차 소믈리에를 위한 미니멀한 디자인의 오브제입니다. 따뜻한 조명과 함께 차분한 리추얼 분위기를 연출합니다.",
-                images: ["assets/img/port.sub1.webp"], // Vite 경로 최적화
+                images: ["assets/img/port.sub1.webp"], 
             },
             "2": {
                 title: "Wave",
@@ -122,28 +127,33 @@
             }
         }; 
     
+        // 3. ID가 유효하고 데이터가 존재하는 경우 화면 업데이트
         if (id && galleryData[id]) {
+            // 헤더 및 하단 설명 텍스트 변경
             document.querySelector('.viewer__title').innerText = galleryData[id].title;
             document.querySelector('.dynamic-title').innerText = galleryData[id].title;
             document.querySelector('.dynamic-desc').innerText = galleryData[id].desc;
     
             const imageContainer = document.querySelector('.image-container');
-            imageContainer.innerHTML = ""; 
+            imageContainer.innerHTML = ""; // 기존에 있던 내용 초기화
     
+            // 4. 배열에 담긴 이미지 경로만큼 <img> 태그 생성 루프
             galleryData[id].images.forEach(imgSrc => {
                 const newImg = document.createElement('img');
                 newImg.src = imgSrc;
                 newImg.alt = galleryData[id].title;
                 
-                // 인라인 스타일로 세로 잘림 방지 강제 적용
-                newImg.style.width = "100%";
-                newImg.style.height = "auto"; 
-                newImg.style.display = "block";
-                newImg.style.marginBottom = "0"; // CSS에서 제어하도록 0으로 설정
+                // ★ 세로 잘림 방지 및 반응형을 위한 강제 스타일 설정 ★
+                newImg.style.width = "100%";   /* 가로 폭 꽉 채움 */
+                newImg.style.height = "auto";  /* 원본 비율 유지 (세로 잘림 방지 핵심) */
+                newImg.style.display = "block";/* 하단 미세 공백 제거 */
+                newImg.style.marginBottom = "0"; 
                 
+                // 생성된 이미지를 컨테이너에 추가
                 imageContainer.appendChild(newImg);
             });
         } else {
+            // 5. 잘못된 ID값이 넘어오거나 데이터가 없을 때의 예외 처리
             document.querySelector('.dynamic-title').innerText = "프로젝트를 찾을 수 없습니다.";
             document.querySelector('.dynamic-desc').innerText = "URL을 확인해 주세요.";
         }

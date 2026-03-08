@@ -1,74 +1,80 @@
+/* 스킬 섹션 전체 컨테이너 */
 .skill__inner {
-  padding: 3rem 3rem 3rem;
-  display: block; 
+  padding: 3rem 3rem 3rem; /* 상, 좌우, 하단 여백 설정 */
+  display: block;          /* 레이아웃의 기본 흐름을 블록 단위로 설정 */
 }
 
+/* 설명 영역 (전체 너비 확보) */
 .skill__desc {
   width: 100%; 
 }
 
-/* ★ 글과 영상을 양 끝으로 배치 ★ */
+/* ★ 글과 영상을 양 끝으로 배치하는 개별 아이템 박스 ★ */
 .skill__item {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between; 
-  align-items: flex-start; 
-  margin-bottom: 25vh; 
+  display: flex;           /* 가로 배치를 위해 플렉스 박스 사용 */
+  flex-direction: row;     /* 좌우 방향으로 나열 */
+  justify-content: space-between; /* 텍스트는 왼쪽 끝, 영상은 오른쪽 끝으로 밀어냄 */
+  align-items: flex-start; /* 높이가 달라도 위쪽 기준으로 정렬 */
+  margin-bottom: 25vh;     /* 다음 아이템과의 간격을 화면 높이의 25%만큼 확보 (여유 있는 배치) */
   width: 100%;
 }
 
+/* 아이템 내 왼쪽 텍스트 영역 */
 .skill__item .text {
-  width: 40%; 
+  width: 40%;              /* 전체 너비의 40% 차지 */
 }
 
+/* 텍스트 제목 스타일 */
 .skill__item .text h3 {
-  font-size: 1.8rem;
-  font-weight: 700;
-  margin-bottom: 20px;
-  font-family: var(--mainKor-font);
+  font-size: 0.9rem;
+  font-weight: 550;
+  margin-bottom: 20px;     /* 제목과 본문 사이 간격 */
+  font-family: var(--mainKor-font); /* 설정해둔 메인 한글 폰트 적용 */
 }
 
+/* 텍스트 본문 스타일 */
 .skill__item .text p {
-  font-size: 1.1rem;
-  line-height: 1.8;
-  color: var(--black200);
-  word-break: keep-all;
+  font-size: 0.8rem;
+  line-height: 1.8;        /* 줄 간격을 넓혀 가독성 향상 */
+  color: var(--black200);  /* 변수로 지정된 부드러운 검정색 사용 */
+  word-break: keep-all;    /* 한글 단어가 중간에 잘리지 않도록 설정 */
 }
 
-/* ★ 영상 원본 유지 + 검은 라인 완전 제거 ★ */
+/* ★ 영상 컨테이너: 원본 유지 + 검은 라인 완전 제거 ★ */
 .skill__item .video {
-  width: 40%; 
-  border-radius: 0px; 
-  overflow: hidden;
-  box-shadow: 0 15px 50px rgba(0,0,0,0.1);
-  /* 영상 뒤에 남는 미세한 틈을 배경색으로 가립니다 */
-  background-color: #f9f9f9; /* 사이트 배경색과 똑같이 맞추는 것이 가장 중요합니다 */
+  width: 40%;              /* 전체 너비의 40% 차지 (텍스트와 균형) */
+  border-radius: 0px;      /* 둥근 모서리 제거 */
+  overflow: hidden;        /* 내부 영상이 박스를 넘어가면 숨김 */
+  box-shadow: 0 15px 50px rgba(0,0,0,0.1); /* 은은한 그림자로 입체감 부여 */
+  /* 영상 뒤에 남는 미세한 틈을 배경색으로 가림 */
+  background-color: #f9f9f9; /* 사이트 배경색과 일치시켜 경계선 제거 */
 }
 
+/* 영상 태그 자체 스타일링 */
 .skill__item .video video {
-  width: 101%; /* ★ 100%보다 아주 살짝 크게 설정하여 우측 틈을 강제로 덮습니다 */
-  height: auto; /* 원본 세로 비율 유지 */
-  display: block;
-  /* 영상 사이즈를 강제로 조절하는 속성들을 모두 제거하여 원본을 유지합니다 */
+  width: 101%;             /* ★ 100%보다 살짝 크게 하여 우측 미세한 빈틈 강제 차단 */
+  height: auto;            /* 가로에 맞춰 세로 비율 자동 계산 (잘림 방지) */
+  display: block;          /* 인라인 여백 방지 */
+  /* 원본 비율을 유지하며 컨테이너에 꽉 채움 */
   object-fit: fill; 
-  margin-left: -0.5%; /* 살짝 커진 너비를 왼쪽으로 밀어 균형을 맞춥니다 */
+  margin-left: -0.5%;      /* width가 커진 만큼 왼쪽으로 밀어 중앙 정렬 유지 */
 }
 
-/* 모바일 대응 */
+/* 모바일 및 태블릿 대응 (반응형 디자인) */
 @media (max-width: 800px) {
   .skill__inner {
-    padding: 40px 20px;
+    padding: 40px 20px;    /* 모바일 환경에 맞는 좁은 여백 */
   }
   .skill__item {
-    flex-direction: column;
-    margin-bottom: 80px;
+    flex-direction: column; /* 가로 배치를 세로 배치로 변경 */
+    margin-bottom: 80px;    /* 아이템 간 간격 조정 */
   }
   .skill__item .text, 
   .skill__item .video {
-    width: 100%;
+    width: 100%;           /* 모바일에서는 가로를 꽉 채움 */
   }
   .skill__item .video video {
-    width: 100%;
-    margin-left: 0;
+    width: 100%;           /* 모바일에서는 정확히 100%로 설정 */
+    margin-left: 0;        /* 밀어냈던 마진 초기화 */
   }
 }

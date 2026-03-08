@@ -1,20 +1,29 @@
-/* 기본 배경 설정 */
-body {
-    background-color: #fff;
+/* 기본 배경 및 스크롤 허용 */
+html, body {
     margin: 0;
-    padding: 0rem 1vw 4.5rem;
+    padding: 0;
+    width: 100%;
+    /* 높이를 고정(100vh)하지 않고, 내용에 따라 늘어나게 설정 */
+    height: auto; 
+    min-height: 100%;
+    overflow-x: hidden; /* 가로 스크롤 방지 */
+    overflow-y: auto;   /* 세로 스크롤 명시적 허용 */
+    background-color: #fff;
 }
 
+/* 이미지 뷰어 전체 컨테이너 */
 #imageViewer {
     width: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
-/* 헤더 영역 */
+/* 헤더 영역 - 반응형 패딩 적용 */
 .viewer__header {
     width: 100%;
-    padding: 30px;
+    padding: 5% 20px 20px; /* 상단 여백을 화면 비율에 맞게 */
     background-color: #fff;
-    text-align: left;
+    box-sizing: border-box;
 }
 
 .back-btn {
@@ -24,57 +33,60 @@ body {
     font-size: 14px;
     color: #666;
     margin-bottom: 10px;
+    transition: opacity 0.3s;
+}
+
+.back-btn:hover {
+    opacity: 0.7;
 }
 
 .viewer__title {
-    font-size: 28px;
+    font-size: clamp(24px, 4vw, 32px); /* 화면 크기에 따라 폰트 크기 조절 */
     font-weight: 700;
     margin: 0;
+    word-break: keep-all;
 }
 
-/* 콘텐츠 영역: 양옆 여백을 완전히 제거하여 이미지를 꽉 채움 */
+/* 콘텐츠 영역: 내부 요소가 삐져나가지 않도록 설정 */
 .viewer__content {
     width: 100%;
+    overflow: visible; /* 자식 요소(이미지)가 잘리지 않게 함 */
 }
 
 .image-item {
     width: 100%;
-    background-color: transparent;
-    box-shadow: none; /* 기존 박스 그림자 제거 */
-    border-radius: 0;
     margin: 0;
     padding: 0;
 }
 
-/* 이미지 컨테이너: 너비 제한을 해제함 */
+/* 이미지 컨테이너: 가로를 꽉 채우되 세로 제약 제거 */
 .image-container {
     width: 100%;
-    max-width: none; 
+    display: block;
     margin: 0;
     padding: 0;
-    display: block;
 }
 
-/* 이미지 스타일: 화면 가로에 꽉 맞춤 */
+/* 이미지 스타일: 반응형 핵심 */
 .image-container img {
-    width: 100%;
-    height: auto;
+    width: 100%;      /* 가로 폭에 맞춤 */
+    height: auto;     /* 세로 비율 유지 (가장 중요) */
     display: block;
-    margin-bottom: 0; /* 이미지 사이 간격은 아래 정보창에서 조절 */
-    object-fit: cover;
+    object-fit: contain; /* 이미지가 잘리지 않고 전체 노출 */
+    image-rendering: -webkit-optimize-contrast; /* 이미지 선명도 향상 */
 }
 
-/* 하단 텍스트 정보: 글자는 가독성을 위해 적절한 여백 유지 */
+/* 하단 텍스트 정보: 가독성을 위한 반응형 여백 */
 .image-info {
     width: 100%;
-    max-width: 1200px;
+    max-width: 1000px; /* 너무 넓게 퍼지지 않도록 제한 */
     margin: 0 auto;
-    padding: 40px 20px;
+    padding: 60px 20px;
     box-sizing: border-box;
 }
 
 .dynamic-title {
-    font-size: 22px;
+    font-size: clamp(20px, 3vw, 26px);
     margin-bottom: 15px;
     font-weight: 600;
 }
@@ -83,13 +95,25 @@ body {
     font-size: 16px;
     line-height: 1.8;
     color: #444;
+    word-break: keep-all; /* 단어 단위 줄바꿈으로 깔끔하게 */
 }
 
+/* 애니메이션 */
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
+    from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
 .image-container img {
-    animation: fadeIn 0.6s ease-out forwards;
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+/* 태블릿/모바일 대응 추가 */
+@media (max-width: 768px) {
+    .viewer__header {
+        padding: 30px 20px 10px;
+    }
+    .image-info {
+        padding: 40px 20px;
+    }
 }

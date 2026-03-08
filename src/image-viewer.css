@@ -1,33 +1,39 @@
-/* 기본 배경 및 스크롤 허용 설정 */
+/* 1. 최상위 요소: 높이 고정 해제 및 스크롤 허용 */
 html, body {
     margin: 0;
     padding: 0;
     width: 100%;
-    /* ★ 핵심: 높이를 100vh로 고정하지 않고 내용(이미지)에 따라 늘어나도록 설정 */
-    height: auto; 
-    min-height: 100%;
-    overflow-x: hidden; /* 가로 스크롤 방지 (모바일 레이아웃 깨짐 방지) */
-    overflow-y: auto;   /* 세로 스크롤을 명시적으로 허용하여 긴 이미지 대응 */
+    height: auto !important;    /* 화면 높이에 가두지 않음 */
+    min-height: 100% !important;
+    overflow-x: hidden;         /* 가로 번짐 방지 */
+    overflow-y: auto !important; /* 세로 스크롤 강제 허용 */
     background-color: #fff;
+    display: block !important;
 }
 
-/* 이미지 뷰어 전체를 감싸는 컨테이너 */
+/* 2. 전체 컨테이너: 높이 제한 해제 */
 #imageViewer {
     width: 100%;
-    display: flex;
-    flex-direction: column; /* 헤더 -> 이미지 -> 설명을 세로로 나열 */
+    height: auto !important;
+    display: block !important;
+    position: relative;
 }
 
-/* 상단 헤더 영역 - 반응형 패딩 적용 */
+.viewer__inner {
+    width: 100%;
+    height: auto !important;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 3. 헤더 영역 */
 .viewer__header {
     width: 100%;
-    /* 상단 여백을 화면 비율(5%)에 맞게 설정하여 기기별로 적절한 간격 유지 */
-    padding: 5% 0px 0px; 
+    padding: 50px 20px 20px; 
     background-color: #fff;
-    box-sizing: border-box; /* 패딩이 너비에 포함되도록 설정 */
+    box-sizing: border-box;
 }
 
-/* 뒤로가기 버튼 스타일 */
 .back-btn {
     cursor: pointer;
     background: none;
@@ -35,99 +41,56 @@ html, body {
     font-size: 14px;
     color: #666;
     margin-bottom: 10px;
-    transition: opacity 0.3s; /* 호버 시 부드러운 전환 효과 */
 }
 
-.back-btn:hover {
-    opacity: 0.7; /* 호버 시 살짝 투명하게 */
-}
-
-/* 프로젝트 메인 타이틀 */
 .viewer__title {
-    /* clamp를 사용하여 화면 크기에 따라 폰트 크기가 최소 24px ~ 최대 32px 사이로 자동 조절됨 */
-    font-size: clamp(24px, 4vw, 32px); 
+    font-size: clamp(24px, 4vw, 32px);
     font-weight: 700;
     margin: 0;
-    word-break: keep-all; /* 한글 단어가 어색하게 잘리지 않도록 설정 */
 }
 
-/* 콘텐츠 영역: 내부 요소가 잘리지 않도록 설정 */
+/* 4. 이미지 콘텐츠 영역: 잘림 방지 핵심 */
 .viewer__content {
     width: 100%;
-    overflow: visible; /* 자식 요소(이미지)가 잘리지 않고 끝까지 보이게 함 */
+    height: auto !important;
+    overflow: visible !important; /* 자식이 길어져도 숨기지 않음 */
 }
 
-/* 개별 이미지 아이템 박스 */
 .image-item {
     width: 100%;
-    margin: 0;
-    padding: 0;
+    height: auto !important;
 }
 
-/* 이미지를 직접 감싸는 컨테이너 */
 .image-container {
     width: 100%;
-    display: block;
-    margin: 0;
-    padding: 0;
+    height: auto !important;
 }
 
-/* ★ 이미지 스타일: 반응형 및 세로 잘림 방지의 핵심 ★ */
+/* 5. 이미지 자체 설정 */
 .image-container img {
-    width: 100%;      /* 가로 폭을 부모에 맞춤 */
-    height: auto;     /* ★ 핵심: 세로 길이를 가로 비율에 맞춰 자동 계산 (절대 잘리지 않음) */
-    display: block;   /* 하단 미세한 공백 제거 */
-    object-fit: contain; /* 이미지가 박스 안에 온전히 다 들어오도록 설정 */
-    image-rendering: -webkit-optimize-contrast; /* 고해상도 이미지의 선명도를 향상시킴 */
+    width: 100%;
+    height: auto !important; /* 원본 비율대로 끝까지 늘어남 */
+    display: block;
+    object-fit: contain;
 }
 
-/* 하단 텍스트 정보 영역 */
+/* 6. 하단 정보 영역 */
 .image-info {
     width: 100%;
-    max-width: 1000px; /* 텍스트가 너무 길게 퍼져서 가독성이 떨어지는 것을 방지 */
-    margin: 0 auto;    /* 중앙 정렬 */
-    padding: 60px 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 80px 20px;
     box-sizing: border-box;
 }
 
-/* 동적 데이터로 들어오는 제목 */
 .dynamic-title {
-    font-size: clamp(20px, 3vw, 26px);
+    font-size: 24px;
     margin-bottom: 15px;
     font-weight: 600;
 }
 
-/* 동적 데이터로 들어오는 본문 설명 */
 .dynamic-desc {
     font-size: 16px;
-    line-height: 1.8;  /* 줄 간격을 넉넉히 주어 가독성 확보 */
+    line-height: 1.8;
     color: #444;
-    word-break: keep-all;
-}
-
-/* 페이지 로드 시 이미지가 아래에서 위로 올라오는 애니메이션 */
-@keyframes fadeIn {
-    from { 
-        opacity: 0; 
-        transform: translateY(20px); /* 20px 아래에서 시작 */
-    }
-    to { 
-        opacity: 1; 
-        transform: translateY(0);    /* 제자리로 이동 */
-    }
-}
-
-.image-container img {
-    /* 0.8초 동안 부드럽게 나타나도록 애니메이션 적용 */
-    animation: fadeIn 0.8s ease-out forwards;
-}
-
-/* 태블릿 및 모바일 대응 (768px 이하) */
-@media (max-width: 768px) {
-    .viewer__header {
-        padding: 30px 20px 10px; /* 모바일 환경에 맞춘 여백 축소 */
-    }
-    .image-info {
-        padding: 40px 20px;      /* 텍스트 간격 조정 */
-    }
 }

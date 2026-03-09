@@ -21,7 +21,7 @@
   color: var(--black60);
   font-weight: 550;
   /* [정렬] 왼쪽 패딩을 2.5rem으로 설정 */
-  padding: 15.5rem 0rem 2.5rem 2.5rem; 
+  padding: 15.5rem 0rem 2.5rem 0rem; 
   box-sizing: border-box;
 }
 
@@ -33,7 +33,7 @@
   line-height: 1.3;
   color: var(--black80);
   /* [정렬] 카테고리와 동일하게 왼쪽 패딩 2.5rem 설정 */
-  padding: 0 0.5rem 2.5rem 2.5rem;
+  padding: 0 0.5rem 2.5rem 0rem;
   box-sizing: border-box;
   letter-spacing: 0.1em;
 }

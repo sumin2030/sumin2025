@@ -26,18 +26,34 @@
 
 /* 텍스트 제목 스타일 */
 .skill__item .text h3 {
-  font-size: 0.9rem;
+  font-size: 1.2vw;
   font-weight: 550;
   margin-bottom: 20px;     /* 제목과 본문 사이 간격 */
   font-family: var(--mainKor-font); /* 설정해둔 메인 한글 폰트 적용 */
+
+  @media (max-width: 768px) {
+    font-size: 3.1vw !important;    /* 가독성을 위해 폰트 크기 고정 */
+    padding: 2rem 1.5rem 1rem 1.5rem !important; /* 모바일 폭에 맞춰 여백 축소 */
+    color: #666 !important;        /* 시인성을 위해 색상 살짝 진하게 조정 */
+    height: auto !important;
+    overflow: visible !important;  /* 텍스트 잘림 방지 */
+  }
 }
 
 /* 텍스트 본문 스타일 */
 .skill__item .text p {
-  font-size: 0.8rem;
+  font-size: 1vw;
   line-height: 1.8;        /* 줄 간격을 넓혀 가독성 향상 */
   color: var(--black200);  /* 변수로 지정된 부드러운 검정색 사용 */
   word-break: keep-all;    /* 한글 단어가 중간에 잘리지 않도록 설정 */
+
+  @media (max-width: 768px) {
+    font-size: 2.5vw !important;    /* 가독성을 위해 폰트 크기 고정 */
+    padding: 2rem 1.5rem 1rem 1.5rem !important; /* 모바일 폭에 맞춰 여백 축소 */
+    color: #666 !important;        /* 시인성을 위해 색상 살짝 진하게 조정 */
+    height: auto !important;
+    overflow: visible !important;  /* 텍스트 잘림 방지 */
+  }
 }
 
 /* ★ 영상 컨테이너: 원본 유지 + 검은 라인 완전 제거 ★ */

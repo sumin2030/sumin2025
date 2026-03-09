@@ -1,175 +1,113 @@
-/* 내부 컨테이너 */
+/* 1. 전체 컨테이너 설정 */
 .port__inner {
   width: 100%;
   min-height: 100vh; 
-  padding: 0 5vw 10rem; 
+  /* [수정] 하단 여백을 10px로 조절하여 바닥 밀착 제어 */
+  padding: 0 5vw 10px; 
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
 }
 
-/* 1. 카테고리 (원본 유지) */
+/* 2. 카테고리 (상단 텍스트) */
 .port__category {
-  /* 다른 스타일과의 충돌을 방지하고 레이아웃 흐름에 배치하도록 강제 설정 */
   display: block !important;
   position: relative !important;
-  z-index: 10 !important; /* 다른 요소(이미지 등) 위로 글씨가 올라오도록 우선순위 부여 */
-  width: 100% !important; /* 섹션의 가로 전체를 차지 */
-
-  /* 폰트 설정: 최소 12px ~ 최대 16px 사이에서 화면 너비(vw)에 따라 유동적으로 변화 */
+  z-index: 10 !important;
+  width: 100% !important;
   font-size: clamp(14px, 1.0vw, 20px); 
-  letter-spacing: 1.12em;       /* 자간을 매우 넓게 설정하여 디자인적 요소 강조 */
-  text-transform: uppercase;    /* 모든 영문을 대문자로 변환 */
-  color: var(--black60);        /* 사전에 정의된 연한 검정색 변수 사용 */
-  font-weight: 550;             /* 중간 정도의 굵기 */
-
-  /* 내부 여백 설정 (상단 15.5rem, 우측 0, 하단 2.5rem, 좌측 2.5rem) */
-  /* 상단 15.5rem은 이전 섹션과의 간격을 확보하는 역할을 합니다. */
-  padding: 15.5rem 0rem 2.5rem 0rem; 
-  
-  /* 패딩 값이 너비(100%)에 포함되도록 하여 가로 스크롤 생성을 방지 */
+  letter-spacing: 1.12em;
+  text-transform: uppercase;
+  color: var(--black60);
+  font-weight: 550;
+  /* [정렬] 왼쪽 패딩을 2.5rem으로 설정 */
+  padding: 15.5rem 0rem 2.5rem 2.5rem; 
   box-sizing: border-box;
 }
 
-/* 2. 설명글 (원본 유지) */
+/* 3. 설명글 */
 .port__description {
-  /* 요소를 블록 레벨로 설정하여 가로 너비 전체를 차지하게 함 */
   display: block;
   width: 100%;
-
-  /* 폰트 설정: 최소 13px에서 최대 18px까지 화면 크기에 따라 유동적으로 변화 */
   font-size: clamp(13px, 0.9vw, 18px);
-  
-  /* 줄 간격: 텍스트가 여러 줄일 때 읽기 편하도록 1.3배의 높이 설정 */
   line-height: 1.3;
-  
-  /* 글자 색상: 카테고리보다 조금 더 진한 80% 농도의 검정색 변수 사용 */
   color: var(--black80);
-
-  /* 내부 여백 설정 (상 0, 우 0.5rem, 하 2.5rem, 좌 2.5rem) */
-  /* 상단 여백을 0으로 설정하여 카테고리 글씨와 적절한 간격을 유지함 */
-  padding: 0 0.5rem 2.5rem 0rem;
-  
-  /* 패딩과 테두리를 너비에 포함시켜 레이아웃이 깨지지 않게 함 */
+  /* [정렬] 카테고리와 동일하게 왼쪽 패딩 2.5rem 설정 */
+  padding: 0 0.5rem 2.5rem 2.5rem;
   box-sizing: border-box;
-  
-  /* 글자 간격: 본문 텍스트에 약간의 여유(0.1em)를 주어 가독성 향상 */
   letter-spacing: 0.1em;
 }
 
-/* --------------------------------------------------
-   [수정 포인트] 설명글과 카드 사이의 여백 조절 부분
-   -------------------------------------------------- */
-.port__header {
-  /* PC 기준 여백: 아래 숫자(150px)를 원하는 만큼 조정하세요 */
-  margin-bottom: 150px; 
-}
-
-/* 가로 스크롤 래퍼 */
+/* 4. 가로 스크롤 래퍼 (PC 웹 전용 하단 띄우기) */
 .port__wrap {
   display: flex;
   flex-wrap: nowrap;
   width: max-content;
+  /* [핵심] 하단에서 10px 띄우기 설정 */
   margin-top: auto;
-  /* [추가] 상단 글씨들의 padding-left: 2.5rem과 동일하게 맞춤 */
+  margin-bottom: 30px; 
+  /* [정렬] 상단 글씨와 시작 라인을 맞춤 */
   padding-left: 2.5rem; 
   padding-right: 10vw;
   align-items: flex-end;
 }
-/* 개별 카드 아이템 (모든 요소 하단 정렬) */
-/* 개별 포트폴리오 카드 아이템 스타일 */
+
+/* 5. 개별 카드 아이템 */
 .port__item {
   width: clamp(180px, 18vw, 300px); 
   height: clamp(240px, 24vw, 401px); 
   background-color: transparent;
   
-  /* [수정] 왼쪽 패딩을 0으로 설정하여 시작 라인을 .port__wrap의 padding-left에 맞춤 */
+  /* [수정] 왼쪽 패딩을 0으로 하여 숫자가 시작 라인에 딱 붙게 함 */
   padding: clamp(1rem, 1.5vw, 2rem) clamp(1rem, 1.5vw, 2rem) clamp(1rem, 1.5vw, 2rem) 0;
   
-  margin-right: clamp(20px, -3vw, -20px);
+  /* [간격] 카드 사이의 여백 (양수일수록 벌어짐) */
+  margin-right: 50px; 
+  
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   position: relative;
 }
-/* 카드 내 프로젝트 번호 스타일 */
+
+/* 6. 카드 내부 요소 (번호) */
 .port__item .num {
-  /* 글자 크기: 가독성을 위해 최소 12px 유지, 최대 16px까지 가변적 설정 */
   font-size: clamp(14px, 0.9vw, 18px);
-  
-  /* 숫자에만 적용되는 전용 폰트 변수 사용 */
   font-family: var(--mainNum-font);
-  
-  /* 번호와 바로 아래 이미지 사이의 간격 설정 */
   margin-bottom: 0.5rem;
-  
-  /* [중요] 위쪽에 자동 여백을 주어 번호가 이미지 바로 위에 붙도록 아래로 밀어냄 */
   margin-top: auto; 
 }
 
-.port__item .img {
-  display: block;
-  width: 100%;
-  margin-bottom: 1rem;
-}
-
-.port__item .img img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-.port__item .title {
-  font-size: clamp(16px, 1.5vw, 24px);
-  font-weight: 700;
-  border-bottom: 2px solid var(--black100);
-  margin-bottom: 0.5rem;
-  padding-bottom: 0.5rem;
-}
-
-.port__item .desc {
-  font-size: clamp(13px, 1vw, 16px);
-  margin-bottom: 1rem;
-}
-
-.port__item .site {
-  border: 1px solid var(--black100);
-  display: block;
-  text-align: center;
-  padding: 0.5rem;
-}
-
 /* --------------------------------------------------
-   [반응형] 모바일 환경 설정
+   [반응형] 768px 이하 모바일 설정
    -------------------------------------------------- */
 @media (max-width: 768px) {
-  .port__header {
-    /* 모바일 기준 여백: 화면이 작을 때 너무 멀면 여기서 줄이세요 */
-    margin-bottom: 60px;  
+  .port__inner {
+    padding-bottom: 50px; /* 모바일은 다음 섹션과의 거리 확보가 우선 */
   }
 
   .port__category {
+    /* 모바일에서는 화면 끝 여백을 1.5rem으로 축소 */
     padding: 8rem 1.5rem 1rem 1.5rem !important;
-    font-size: clamp(14px, 1.0vw, 20px); 
-    letter-spacing: 0.5em;  
+    letter-spacing: 0.5em; 	
   }
 
   .port__description {
     padding: 0 1.5rem 2rem 1.5rem !important;
-    font-size: clamp(14px, 0.8vw, 20px); 
-  }
-
-  .port__item {
-    /* 모바일에서 카드 크기 조정 */
-    width: 75vw;
-    height: auto; 
-    min-height: 380px; /* 내부 요소가 다 보이도록 최소 높이 설정 */
-    margin-right: 15px; 
-    padding: 20px;
-    justify-content: flex-end; /* 모바일에서도 하단 정렬 유지 */
   }
 
   .port__wrap {
-    margin-top: 0; /* 모바일은 헤더 마진으로 조절하므로 auto 해제 */
+    /* 모바일은 수직 정렬을 위해 margin-top 해제 */
+    margin-top: 0; 
+    margin-bottom: 0;
+    padding-left: 1.5rem; /* 상단 글씨와 맞춤 */
+  }
+
+  .port__item {
+    width: 75vw;
+    height: auto; 
+    min-height: 380px;
+    margin-right: 20px; /* 모바일용 간격 */
+    padding: 20px; /* 모바일은 다시 전체 패딩 부여 */
   }
 }

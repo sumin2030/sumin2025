@@ -1,142 +1,87 @@
+/* 컨택트 섹션 전체 설정 */
 #contact {
-    min-height: 60vh;
+    /* PC 기준 높이: 필요에 따라 60vh 숫자를 조정하세요 */
+    min-height: 20vh;
     height: auto;
+    width: 100%;
 }
+
+/* 내부 컨테이너 */
 .contact__inner {
     width: 100%;
-    min-height: 60vh;
+    min-height: 20vh;
     height: auto;
     padding: 16px;
     display: flex;
-    align-items: flex-start;
-    justify-content: flex-end;
+    /* 왼쪽 정렬을 위해 flex-start 사용 */
+    align-items: flex-start; 
+    /* 세로 위치를 하단이 아닌 중앙으로 배치하고 싶다면 center로 변경 가능 */
+    justify-content: flex-end; 
     flex-direction: column;
 }
-.contact__title {
-    font-size: clamp(30px, 5vw, 80px);
-    text-transform: uppercase;
-    line-height: 1;
-    height: 3.5vw;
-    font-size: 2.5vw;
-    font-weight: 800;
-    white-space: nowrap;
-    text-indent: 0vw;
-    letter-spacing: -0.3vw;
-}
+
+/* 텍스트를 감싸는 영역 */
 .contact__text {
     width: 100%;
-    height: 40vh;
-    background-color: var(--black5);
-    color: var(--white);
+    /* 배경색(검정 박스)을 투명하게 하거나 제거 */
+    background-color: transparent; 
+    /* 글자색: 배경이 밝을 경우 var(--black100) 등으로 변경하세요 */
+    color: var(--black100); 
     display: flex;
-    align-items: center;
+    /* [수정] 중앙 정렬(center)에서 왼쪽 정렬(flex-start)로 변경 */
+    align-items: flex-start; 
     justify-content: center;
     flex-direction: column;
     position: relative;
 }
+
+/* 실제 링크/텍스트 스타일 */
 .contact__text .text {
-    font-size: 3vw;
-    line-height: 1;
+    /* PC 기준 폰트 사이즈: 숫자를 바꿔서 크기를 조절하세요 */
+    font-size: clamp(20px, 1.5vw, 30px); 
+    line-height: 1.6; /* 줄간격을 조금 넓혀 가독성 향상 */
     font-weight: 900;
     text-transform: uppercase;
     text-decoration: underline;
-    text-align: center;
+    /* [수정] 왼쪽 정렬 */
+    text-align: left; 
     position: relative;
     z-index: 100;
     transition: all 0.3s;
-    cursor: all-scroll;
 }
-.contact__lines {
-    width: 100%;
-}
-.contact__lines .line {
-    display: block;
-    width: 100%;
-    height: 1px;
-    margin-bottom: 0.5vw;
-}
-.contact__lines.top .line {
-    margin-top: 0.5vw;
-    margin-bottom: 0;
-    display: none;
-}
-.contact__lines.top .line:nth-child(1){
-    height: 1px;
-    background-color: var(--black12);
-}
-.contact__lines.top .line:nth-child(2){
-    height: 2px;
-    background-color: var(--black11);
-}
-.contact__lines.top .line:nth-child(3){
-    height: 5px;
-    background-color: var(--black10);
-}
-.contact__lines.top .line:nth-child(4){
-    height: 9px;
-    background-color: var(--black9);
-}
-.contact__lines.top .line:nth-child(5){
-    height: 13px;
-    background-color: var(--black8);
-}
-.contact__lines.top .line:nth-child(6){
-    height: 17px;
-    background-color: var(--black7);
-}
-.contact__lines.top .line:nth-child(7){
-    height: 25px;
-    background-color: var(--black6);
-}
-.contact__lines .line:nth-child(1){
-    height: 25px;
-    background-color: var(--black6);
-}
-.contact__lines .line:nth-child(2){
-    height: 17px;
-    background-color: var(--black7);
-}
-.contact__lines .line:nth-child(3){
-    height: 13px;
-    background-color: var(--black8);
-}
-.contact__lines .line:nth-child(4){
-    height: 9px;
-    background-color: var(--black9);
-}
-.contact__lines .line:nth-child(5){
-    height: 5px;
-    background-color: var(--black10);
-}
-.contact__lines .line:nth-child(6){
-    height: 2px;
-    background-color: var(--black11);
-}
-.contact__lines .line:nth-child(7){
-    height: 1px;
-    background-color: var(--black12);
-}
-@media (max-width: 800px){
+
+/* --------------------------------------------------
+   [반응형] 800px 이하 모바일 설정
+   -------------------------------------------------- */
+@media (max-width: 400px){
     #contact {
-        min-height: 50vh;
+        /* 모바일 화면 높이 */
+        min-height: 20vh;
     }
+    
     .contact__title {
         display: none;
     }
-    .contact__lines.top .line {
-        display: block;
-    }
+    
     .contact__text {
         height: auto;
-        min-height: 30vh;
+        min-height: 20vh;
+        /* 모바일에서도 왼쪽 정렬 유지 */
+        align-items: flex-start;
     }
+    
     .contact__text .text {
-        font-size: 24px;
-        padding: 0 16px;
+        /* [수정] 1.5px는 너무 작으므로 모바일에서 보기 편한 4vw 정도로 수정 */
+        font-size: 5vw; 
+        padding: 0; /* 왼쪽 밀착을 위해 패딩 제거 */
         word-break: break-all;
+        text-align: left;
     }
+    
     .contact__inner {
-        min-height: 50vh;
+        min-height: 40vh;
+        /* 모바일에서 수직 중앙 정렬 */
         justify-content: center;
+        padding-left: 20px; /* 화면 끝에 너무 붙지 않게 살짝 여백 */
     }
 }

@@ -10,28 +10,50 @@
 
 /* 1. 카테고리 (원본 유지) */
 .port__category {
+  /* 다른 스타일과의 충돌을 방지하고 레이아웃 흐름에 배치하도록 강제 설정 */
   display: block !important;
   position: relative !important;
-  z-index: 10 !important;
-  width: 100% !important;
-  font-size: clamp(12px, 0.8vw, 16px);
-  letter-spacing: 1.12em;
-  text-transform: uppercase;
-  color: var(--black60);
-  font-weight: 550;
-  padding: 15.5rem 0.5rem 1.5rem 0rem; 
+  z-index: 10 !important; /* 다른 요소(이미지 등) 위로 글씨가 올라오도록 우선순위 부여 */
+  width: 100% !important; /* 섹션의 가로 전체를 차지 */
+
+  /* 폰트 설정: 최소 12px ~ 최대 16px 사이에서 화면 너비(vw)에 따라 유동적으로 변화 */
+  font-size: clamp(12px, 0.8vw, 16px); 
+  letter-spacing: 1.12em;       /* 자간을 매우 넓게 설정하여 디자인적 요소 강조 */
+  text-transform: uppercase;    /* 모든 영문을 대문자로 변환 */
+  color: var(--black60);        /* 사전에 정의된 연한 검정색 변수 사용 */
+  font-weight: 550;             /* 중간 정도의 굵기 */
+
+  /* 내부 여백 설정 (상단 15.5rem, 우측 0, 하단 2.5rem, 좌측 2.5rem) */
+  /* 상단 15.5rem은 이전 섹션과의 간격을 확보하는 역할을 합니다. */
+  padding: 15.5rem 0rem 2.5rem 0rem; 
+  
+  /* 패딩 값이 너비(100%)에 포함되도록 하여 가로 스크롤 생성을 방지 */
   box-sizing: border-box;
 }
 
 /* 2. 설명글 (원본 유지) */
 .port__description {
+  /* 요소를 블록 레벨로 설정하여 가로 너비 전체를 차지하게 함 */
   display: block;
   width: 100%;
+
+  /* 폰트 설정: 최소 13px에서 최대 18px까지 화면 크기에 따라 유동적으로 변화 */
   font-size: clamp(13px, 0.8vw, 18px);
+  
+  /* 줄 간격: 텍스트가 여러 줄일 때 읽기 편하도록 1.3배의 높이 설정 */
   line-height: 1.3;
+  
+  /* 글자 색상: 카테고리보다 조금 더 진한 80% 농도의 검정색 변수 사용 */
   color: var(--black80);
+
+  /* 내부 여백 설정 (상 0, 우 0.5rem, 하 2.5rem, 좌 2.5rem) */
+  /* 상단 여백을 0으로 설정하여 카테고리 글씨와 적절한 간격을 유지함 */
   padding: 0 0.5rem 2.5rem 0rem;
+  
+  /* 패딩과 테두리를 너비에 포함시켜 레이아웃이 깨지지 않게 함 */
   box-sizing: border-box;
+  
+  /* 글자 간격: 본문 텍스트에 약간의 여유(0.1em)를 주어 가독성 향상 */
   letter-spacing: 0.1em;
 }
 
@@ -54,22 +76,47 @@
 }
 
 /* 개별 카드 아이템 (모든 요소 하단 정렬) */
+/* 개별 포트폴리오 카드 아이템 스타일 */
 .port__item {
+  /* 너비: 최소 180px에서 최대 300px까지 화면 너비(18vw)에 따라 가변적 설정 */
   width: clamp(180px, 18vw, 300px); 
+  
+  /* 높이: 최소 240px에서 최대 401px까지 화면 너비(24vw)에 따라 가변적 설정 */
   height: clamp(240px, 24vw, 401px); 
+  
+  /* 배경색을 투명하게 하여 뒤의 섹션 배경이 보이도록 설정 */
   background-color: transparent;
+  
+  /* 내부 여백: 1rem에서 2rem 사이로 유동적으로 조절하여 내부 콘텐츠 보호 */
   padding: clamp(1rem, 1.5vw, 2rem);
+  
+  /* [핵심 디자인] 마이너스 마진을 사용하여 옆 카드와 자연스럽게 겹치도록 연출 */
+  /* 화면이 작아지면 겹치는 정도도 줄어듭니다 (-40px ~ -20px) */
   margin-right: clamp(-40px, -3vw, -20px);
+  
+  /* 내부 요소를 세로 방향으로 정렬 */
   display: flex;
   flex-direction: column;
-  justify-content: flex-end; /* 카드 내부 요소를 바닥으로 */
+  
+  /* [중요] 모든 내부 콘텐츠(숫자, 이미지 등)를 카드의 하단으로 밀착 정렬 */
+  justify-content: flex-end; 
+  
+  /* 내부 절대 위치 요소(z-index 등)의 기준점이 되도록 설정 */
   position: relative;
 }
 
+/* 카드 내 프로젝트 번호 스타일 */
 .port__item .num {
-  font-size: clamp(13px, 0.8vw, 16px);
+  /* 글자 크기: 가독성을 위해 최소 12px 유지, 최대 16px까지 가변적 설정 */
+  font-size: clamp(12px, 0.8vw, 16px);
+  
+  /* 숫자에만 적용되는 전용 폰트 변수 사용 */
   font-family: var(--mainNum-font);
+  
+  /* 번호와 바로 아래 이미지 사이의 간격 설정 */
   margin-bottom: 0.5rem;
+  
+  /* [중요] 위쪽에 자동 여백을 주어 번호가 이미지 바로 위에 붙도록 아래로 밀어냄 */
   margin-top: auto; 
 }
 

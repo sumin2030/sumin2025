@@ -26,36 +26,76 @@
 
 /* 텍스트 제목 스타일 */
 .skill__item .text h3 {
+  /* PC 기준 제목 크기: 화면 너비의 1.2%로 설정하여 본문보다 강조 */
   font-size: 1.2vw;
+  
+  /* 폰트 굵기: 너무 두껍지 않은 적당한 굵기(550)로 설정 */
   font-weight: 550;
-  margin-bottom: 20px;     /* 제목과 본문 사이 간격 */
-  font-family: var(--mainKor-font); /* 설정해둔 메인 한글 폰트 적용 */
+  
+  /* 간격 설정: 제목 바로 아래에 오는 본문(p)과의 거리 확보 */
+  margin-bottom: 20px; 
+  
+  /* 폰트 종류: 사전에 정의된 메인 한글 폰트 변수 적용 */
+  font-family: var(--mainKor-font);
 
+  /* --------------------------------------------------
+     [반응형] 768px 이하 모바일 설정
+     ※ SCSS/Sass 환경이 아닐 경우 이 블록을 밖으로 분리해야 합니다.
+     -------------------------------------------------- */
   @media (max-width: 768px) {
-    font-size: 3.1vw !important;    /* 가독성을 위해 폰트 크기 고정 */
-    padding: 2rem 1.5rem 1rem 1.5rem !important; /* 모바일 폭에 맞춰 여백 축소 */
-    color: #666 !important;        /* 시인성을 위해 색상 살짝 진하게 조정 */
+    /* 모바일 제목 크기: 작은 화면에서도 눈에 띄도록 3.1vw로 확대 */
+    font-size: 3.1vw !important;
+    
+    /* 여백 조정: 상(2rem) 좌우(1.5rem) 하(1rem) 순서로 여백을 주어 
+       텍스트가 화면 끝에 붙지 않게 보호 */
+    padding: 2rem 0rem 0rem  !important;
+    
+    /* 색상 변경: 배경과의 대비를 높여 더 잘 보이도록 진한 회색(#666) 적용 */
+    color: #666 !important;
+    
+    /* 높이 해제: 제목이 길어져 줄바꿈이 되어도 영역이 잘리지 않도록 설정 */
     height: auto !important;
-    overflow: visible !important;  /* 텍스트 잘림 방지 */
+    
+    /* 잘림 방지: 레이아웃 밖으로 글자가 나가지 않고 모두 표시되도록 보장 */
+    overflow: visible !important;
   }
 }
-
 /* 텍스트 본문 스타일 */
 .skill__item .text p {
+  /* PC 기준 폰트 사이즈: 화면 너비의 1% 크기로 설정 */
   font-size: 1vw;
-  line-height: 1.8;        /* 줄 간격을 넓혀 가독성 향상 */
-  color: var(--black200);  /* 변수로 지정된 부드러운 검정색 사용 */
-  word-break: keep-all;    /* 한글 단어가 중간에 잘리지 않도록 설정 */
+  
+  /* 줄 간격: 텍스트가 여러 줄일 때 읽기 편하도록 기본 높이의 1.8배 설정 */
+  line-height: 1.8;
+  
+  /* 글자 색상: 프로젝트 공통 변수인 부드러운 검정색(--black200) 적용 */
+  color: var(--black200);
+  
+  /* 한글 최적화: 단어 단위로 줄바꿈이 일어나서 문장이 깔끔하게 떨어지도록 설정 */
+  word-break: keep-all;
 
+  /* --------------------------------------------------
+     [반응형] 768px 이하 모바일 설정
+     ※ 주의: 일반 CSS에서는 중첩(Nesting)이 안 되므로 
+     컴파일 환경이 아닐 경우 밖으로 빼서 작성해야 합니다.
+     -------------------------------------------------- */
   @media (max-width: 768px) {
-    font-size: 2.5vw !important;    /* 가독성을 위해 폰트 크기 고정 */
-    padding: 2rem 1.5rem 1rem 1.5rem !important; /* 모바일 폭에 맞춰 여백 축소 */
-    color: #666 !important;        /* 시인성을 위해 색상 살짝 진하게 조정 */
+    /* 모바일 폰트 사이즈: 화면 너비의 2.5%로 키워서 가독성 확보 */
+    font-size: 2.5vw !important;
+    
+    /* 여백 조정: 상(0) 좌우(1rem) 하(1.5rem)로 설정하여 모바일 레이아웃 최적화 */
+    padding: 0rem 0rem 1.5rem !important;
+    
+    /* 색상 변경: 모바일의 작은 화면에서 더 잘 보이도록 진한 회색(#666)으로 강제 변경 */
+    color: #666 !important;
+    
+    /* 높이 해제: 내용 길이에 상관없이 텍스트가 다 보일 수 있도록 높이 제한 없음 */
     height: auto !important;
-    overflow: visible !important;  /* 텍스트 잘림 방지 */
+    
+    /* 잘림 방지: 긴 문장이 오더라도 숨겨지지 않고 모두 표시되도록 설정 */
+    overflow: visible !important;
   }
 }
-
 /* ★ 영상 컨테이너: 원본 유지 + 검은 라인 완전 제거 ★ */
 .skill__item .video {
   width: 40%;              /* 전체 너비의 40% 차지 (텍스트와 균형) */

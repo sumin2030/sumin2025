@@ -5,30 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>이미지 갤러리 | Portfolio</title>
     
-    <link rel="stylesheet" href="/src/assets/css/setting/vars.css">
-    <link rel="stylesheet" href="/src/assets/css/setting/reset.css">
-    <link rel="stylesheet" href="/src/assets/css/setting/fonts.css">
+    <link rel="stylesheet" href="./assets/css/setting/vars.css">
+    <link rel="stylesheet" href="./assets/css/setting/reset.css">
+    <link rel="stylesheet" href="./assets/css/setting/fonts.css">
     <link rel="stylesheet" href="./image-viewer.css">
     
     <style>
         /* CSS 파일 외에 레이아웃 오류 방지를 위한 핵심 스타일 */
         html, body {
-            /* 상위 요소에서 높이를 고정하면 내용이 잘리므로 auto로 설정 */
             height: auto !important; 
-            /* 내용이 길어질 경우를 대비해 세로 스크롤을 강제로 허용 */
             overflow-y: auto !important; 
             margin: 0;
             padding: 0;
+            background-color: #fff; /* 배경색이 안 보일 경우를 대비 */
         }
         #imageViewer {
             width: 100%;
-            height: auto; /* 내용(이미지)에 따라 높이가 늘어나도록 설정 */
+            height: auto;
             display: block;
         }
         .viewer__inner {
             width: 100%;
             display: flex;
-            flex-direction: column; /* 헤더-콘텐츠-설명을 세로로 나열 */
+            flex-direction: column;
+        }
+        .viewer__header {
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .back-btn {
+            cursor: pointer;
+            padding: 8px 16px;
+            background: #eee;
+            border: none;
+            border-radius: 4px;
+        }
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            display: block;
         }
     </style>
 </head>
@@ -45,9 +62,10 @@
 
             <div class="viewer__content">
                 <div class="image-item">
-                    <div class="image-container"></div>
+                    <div class="image-container">
+                        </div>
                     
-                    <div class="image-info">
+                    <div class="image-info" style="padding: 20px;">
                         <div class="image-description">
                             <h3 class="dynamic-title">제목 로딩 중...</h3>
                             <p class="dynamic-desc">설명 로딩 중...</p>
@@ -59,103 +77,104 @@
     </section>
 
     <script>
-        // 1. URL 파라미터에서 'id' 값을 가져옴 (예: gallery.html?id=1)
+        // 1. URL 파라미터에서 'id' 값을 가져옴
         const params = new URLSearchParams(window.location.search);
         const id = params.get('id');
     
-        // 2. 각 프로젝트별 데이터 정의 (제목, 설명, 이미지 경로)
+        // 2. 각 프로젝트별 데이터 정의 (이미지 경로 앞에 ./를 붙여 안정성을 높였습니다)
         const galleryData = {
             "1": {
                 title: "Orb (오브)",
                 desc: "차 소믈리에를 위한 미니멀한 디자인의 오브제입니다. 따뜻한 조명과 함께 차분한 리추얼 분위기를 연출합니다.",
-                images: ["assets/img/port.sub1.webp"], 
+                images: ["./assets/img/port.sub1.webp"], 
             },
             "2": {
                 title: "Wave",
                 desc: "부드러운 곡선의 미학을 담은 가구 디자인 프로젝트입니다.",
-                images: ["assets/img/port.sub2.webp"],
+                images: ["./assets/img/port.sub2.webp"],
             },
             "3": {
                 title: "Flo",
                 desc: "자연스러운 흐름과 기능성을 결합한 제품 디자인입니다.",
-                images: ["assets/img/port.sub3.webp"],
+                images: ["./assets/img/port.sub3.webp"],
             },
             "4": {
                 title: "연화 (Incense Holder)",
                 desc: "동양적인 무드를 현대적으로 재해석한 인센스 홀더 디자인입니다.",
-                images: ["assets/img/port.sub4.webp"],
+                images: ["./assets/img/port.sub4.webp"],
             },
             "5": {
                 title: "Bug Free",
                 desc: "해충으로부터 자유로운 쾌적한 환경을 위한 디자인 솔루션입니다.",
-                images: ["assets/img/port.sub5.webp"],
+                images: ["./assets/img/port.sub5.webp"],
             },
             "6": {
                 title: "Side Table",
                 desc: "공간의 효율성을 높여주는 미니멀한 사이드 테이블입니다.",
-                images: ["assets/img/port.sub6.webp"],
+                images: ["./assets/img/port.sub6.webp"],
             },
             "7": {
                 title: "Fake Chair",
                 desc: "시각적 유희와 가구의 본질을 탐구한 디자인 체어입니다.",
-                images: ["assets/img/port.sub7.webp"],
+                images: ["./assets/img/port.sub7.webp"],
             },
             "8": {
                 title: "Mrow",
                 desc: "반려동물과 인간의 공존을 위한 오브제 디자인입니다.",
-                images: ["assets/img/port.sub8.webp"],
+                images: ["./assets/img/port.sub8.webp"],
             },
             "9": {
                 title: "Amiro",
                 desc: "세련된 감각을 더해주는 인테리어 소품 디자인입니다.",
-                images: ["assets/img/port.sub9.webp"], 
+                images: ["./assets/img/port.sub9.webp"], 
             },
             "10": {
                 title: "Custom Table A",
                 desc: "사용자의 라이프스타일에 맞춘 커스텀 테이블입니다.",
-                images: ["assets/img/port.sub10.webp"], 
+                images: ["./assets/img/port.sub10.webp"], 
             },
             "11": {
                 title: "Custom Table B",
                 desc: "다양한 활용도를 고려하여 설계된 테이블 프로젝트입니다.",
-                images: ["assets/img/port.sub11.webp"],
+                images: ["./assets/img/port.sub11.webp"],
             },
             "12": {
                 title: "Custom Table C",
                 desc: "미적 요소와 실용성을 모두 잡은 가구 디자인입니다.",
-                images: ["assets/img/port.sub12.webp"],
+                images: ["./assets/img/port.sub12.webp"],
             }
         }; 
     
         // 3. ID가 유효하고 데이터가 존재하는 경우 화면 업데이트
+        const titleElement = document.querySelector('.viewer__title');
+        const dynamicTitle = document.querySelector('.dynamic-title');
+        const dynamicDesc = document.querySelector('.dynamic-desc');
+        const imageContainer = document.querySelector('.image-container');
+
         if (id && galleryData[id]) {
-            // 헤더 및 하단 설명 텍스트 변경
-            document.querySelector('.viewer__title').innerText = galleryData[id].title;
-            document.querySelector('.dynamic-title').innerText = galleryData[id].title;
-            document.querySelector('.dynamic-desc').innerText = galleryData[id].desc;
+            titleElement.innerText = galleryData[id].title;
+            dynamicTitle.innerText = galleryData[id].title;
+            dynamicDesc.innerText = galleryData[id].desc;
+            imageContainer.innerHTML = ""; 
     
-            const imageContainer = document.querySelector('.image-container');
-            imageContainer.innerHTML = ""; // 기존에 있던 내용 초기화
-    
-            // 4. 배열에 담긴 이미지 경로만큼 <img> 태그 생성 루프
             galleryData[id].images.forEach(imgSrc => {
                 const newImg = document.createElement('img');
+                // 배포 환경에서 경로 인식을 돕기 위해 ./를 확실히 처리
                 newImg.src = imgSrc;
                 newImg.alt = galleryData[id].title;
                 
-                // ★ 세로 잘림 방지 및 반응형을 위한 강제 스타일 설정 ★
-                newImg.style.width = "100%";   /* 가로 폭 꽉 채움 */
-                newImg.style.height = "auto";  /* 원본 비율 유지 (세로 잘림 방지 핵심) */
-                newImg.style.display = "block";/* 하단 미세 공백 제거 */
-                newImg.style.marginBottom = "0"; 
+                newImg.style.width = "100%";
+                newImg.style.height = "auto";
+                newImg.style.display = "block";
                 
-                // 생성된 이미지를 컨테이너에 추가
+                // 이미지 로드 에러 시 확인을 위한 콘솔 로그 추가
+                newImg.onerror = () => console.error("이미지를 찾을 수 없습니다:", imgSrc);
+                
                 imageContainer.appendChild(newImg);
             });
         } else {
-            // 5. 잘못된 ID값이 넘어오거나 데이터가 없을 때의 예외 처리
-            document.querySelector('.dynamic-title').innerText = "프로젝트를 찾을 수 없습니다.";
-            document.querySelector('.dynamic-desc').innerText = "URL을 확인해 주세요.";
+            dynamicTitle.innerText = "프로젝트를 찾을 수 없습니다.";
+            dynamicDesc.innerText = "URL의 id 파라미터를 확인해 주세요. (예: gallery.html?id=1)";
         }
     </script>
 </body>

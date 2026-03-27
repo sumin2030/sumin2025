@@ -8,6 +8,8 @@ export default defineConfig({
     build: {
         // 빌드 결과물이 저장될 위치입니다
         outDir: "../public",
+        // root 바깥 폴더(public)도 빌드 전에 정리되도록 허용
+        emptyOutDir: true,
         // 빌드 시 index.html과 gallery.html을 정확히 찾도록 설정합니다
         rollupOptions: {
             input: {

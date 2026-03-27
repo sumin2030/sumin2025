@@ -12,4 +12,48 @@ window.addEventListener("load", function () {
     if (window.location.pathname === '/' || window.location.pathname === '/index.html' || window.location.pathname === '') {
         port();
     }
+
+    const skillSection = document.querySelector("#skill");
+    const skillVideos = skillSection ? skillSection.querySelectorAll("video") : [];
+
+    if (skillSection && skillVideos.length) {
+        // 초기 진입 시 자동 재생 방지: 섹션이 보일 때만 시작
+        skillVideos.forEach((video) => {
+            video.muted = true;
+            video.playsInline = true;
+            video.pause();
+            video.currentTime = 0;
+        });
+        let isSkillSectionVisible = false;
+
+        const skillVideoObserver = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting && !isSkillSectionVisible) {
+                        isSkillSectionVisible = true;
+                        skillVideos.forEach((video) => {
+                            video.currentTime = 0;
+                            const playPromise = video.play();
+                            if (playPromise && typeof playPromise.catch === "function") {
+                                playPromise.catch(() => {});
+                            }
+                        });
+                    } else if (!entry.isIntersecting && isSkillSectionVisible) {
+                        isSkillSectionVisible = false;
+                        skillVideos.forEach((video) => {
+                            video.pause();
+                            video.currentTime = 0;
+                        });
+                    }
+                });
+            },
+            {
+                // 큰 섹션에서도 반응형으로 안정적으로 감지되도록 완화
+                threshold: 0.05,
+                rootMargin: "0px 0px -10% 0px",
+            }
+        );
+
+        skillVideoObserver.observe(skillSection);
+    }
 });

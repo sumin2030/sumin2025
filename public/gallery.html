@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이미지 갤러리 | Portfolio</title>
+    
+    
+    <style>
+        html, body {
+            height: auto !important; 
+            overflow-y: auto !important; 
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+        }
+        #imageViewer {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .viewer__inner {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .viewer__header {
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .back-btn {
+            cursor: pointer;
+            padding: 8px 16px;
+            background: #eee;
+            border: none;
+            border-radius: 4px;
+        }
+        .image-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .image-info {
+            padding: 40px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+    </style>
+  <link rel="stylesheet" crossorigin href="/assets/gallery-CL_YGQ5E.css">
+</head>
+<body>
+
+    <section id="imageViewer">
+        <div class="viewer__inner">
+            <div class="viewer__header">
+                <button class="back-btn" onclick="location.href='index.html'">
+                    &larr; back
+                </button>
+                <h2 class="viewer__title">나의 포트폴리오 갤러리</h2>
+            </div>
+
+            <div class="viewer__content">
+                <div class="image-item">
+                    <div class="image-container"></div>
+                    <div class="image-info">
+                        <div class="image-description">
+                            <h3 class="dynamic-title">제목 로딩 중...</h3>
+                            <p class="dynamic-desc">설명 로딩 중...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const id = params.get('id');
+    
+        const galleryData = {
+            "1": {
+                title: "Orb (오브)",
+                desc: "차 소믈리에를 위한 미니멀한 디자인의 오브제입니다. 따뜻한 조명과 함께 차분한 리추얼 분위기를 연출합니다.",
+                // Vite 로컬 환경(npm run dev)에서 작동하도록 경로를 수정했습니다.
+                images: ["./assets/img2/port.sub1.webp"], 
+            },
+            "2": {
+                title: "Wave",
+                desc: "부드러운 곡선의 미학을 담은 가구 디자인 프로젝트입니다.",
+                images: ["./assets/img2/port.sub2.webp"],
+            },
+            "3": {
+                title: "Flo",
+                desc: "자연스러운 흐름과 기능성을 결합한 제품 디자인입니다.",
+                images: ["./assets/img2/port.sub3.webp"],
+            },
+            "4": {
+                title: "연화 (Incense Holder)",
+                desc: "동양적인 무드를 현대적으로 재해석한 인센스 홀더 디자인입니다.",
+                images: ["./assets/img2/port.sub4.webp"],
+            },
+            "5": {
+                title: "Bug Free",
+                desc: "해충으로부터 자유로운 쾌적한 환경을 위한 디자인 솔루션입니다.",
+                images: ["./assets/img2/port.sub5.webp"],
+            },
+            "6": {
+                title: "Side Table",
+                desc: "공간의 효율성을 높여주는 미니멀한 사이드 테이블입니다.",
+                images: ["./assets/img2/port.sub6.webp"],
+            },
+            "7": {
+                title: "Fake Chair",
+                desc: "시각적 유희와 가구의 본질을 탐구한 디자인 체어입니다.",
+                images: ["./assets/img2/port.sub7.webp"],
+            },
+            "8": {
+                title: "Mrow",
+                desc: "반려동물과 인간의 공존을 위한 오브제 디자인입니다.",
+                images: ["./assets/img2/port.sub8.webp"],
+            },
+            "9": {
+                title: "Amiro",
+                desc: "세련된 감각을 더해주는 인테리어 소품 디자인입니다.",
+                images: ["./assets/img2/port.sub9.webp"], 
+            },
+            "10": {
+                title: "Custom Table A",
+                desc: "사용자의 라이프스타일에 맞춘 커스텀 테이블입니다.",
+                images: ["./assets/img2/port.sub10.webp"], 
+            },
+            "11": {
+                title: "Custom Table B",
+                desc: "다양한 활용도를 고려하여 설계된 테이블 프로젝트입니다.",
+                images: ["./assets/img2/port.sub11.webp"],
+            },
+            "12": {
+                title: "Custom Table C",
+                desc: "미적 요소와 실용성을 모두 잡은 가구 디자인입니다.",
+                images: ["./assets/img2/port.sub12.webp"],
+            }
+        }; 
+    
+        const titleElement = document.querySelector('.viewer__title');
+        const dynamicTitle = document.querySelector('.dynamic-title');
+        const dynamicDesc = document.querySelector('.dynamic-desc');
+        const imageContainer = document.querySelector('.image-container');
+
+        if (id && galleryData[id]) {
+            titleElement.innerText = galleryData[id].title;
+            dynamicTitle.innerText = galleryData[id].title;
+            dynamicDesc.innerText = galleryData[id].desc;
+            imageContainer.innerHTML = ""; 
+    
+            galleryData[id].images.forEach(imgSrc => {
+                const newImg = document.createElement('img');
+                newImg.src = imgSrc;
+                newImg.alt = galleryData[id].title;
+                imageContainer.appendChild(newImg);
+            });
+        }
+    </script>
+</body>
+</html>

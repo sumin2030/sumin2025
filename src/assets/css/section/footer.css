@@ -26,8 +26,17 @@
     padding: 20px 0;
     text-transform: uppercase;
     font-weight: 700;
-    background: url(../../img/arrow.svg) no-repeat right 20px;
+    position: relative;
     transition: all 0.3s;
+}
+.footer__info .left .title::after {
+    content: "→";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    line-height: 1;
 }
 .footer__info .left .title:hover {
     background-color: var(--black400);

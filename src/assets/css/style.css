@@ -12,3 +12,11 @@
 @import url(section/port.css);
 @import url(section/contact.css);
 @import url(section/footer.css);
+
+/* 화면 밖 섹션은 필요할 때 렌더링해 초기 로딩을 줄입니다 */
+#skill,
+#contact,
+#footer {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 800px;
+}

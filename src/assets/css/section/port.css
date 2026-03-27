@@ -111,3 +111,47 @@
     padding: 20px; /* 모바일은 다시 전체 패딩 부여 */
   }
 }
+
+/* --------------------------------------------------
+   [반응형] 패드(태블릿) 전용: 769px ~ 1024px
+   - 웹/모바일 레이아웃은 유지하고 패드만 보정
+   -------------------------------------------------- */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .port__inner {
+    min-height: auto;
+    padding: 0 28px 24px;
+  }
+
+  .port__category {
+    padding: 8.5rem 0 1.5rem 0;
+    letter-spacing: 0.55em;
+    font-size: clamp(16px, 1.8vw, 19px);
+  }
+
+  .port__description {
+    padding: 0 0 1.5rem 0;
+    font-size: clamp(14px, 1.45vw, 16px);
+    line-height: 1.55;
+    letter-spacing: 0.03em;
+  }
+
+  .port__wrap {
+    margin-top: 14px;
+    margin-bottom: 8px;
+    padding-left: 0;
+    padding-right: 0;
+    align-items: flex-end;
+  }
+
+  .port__item {
+    width: clamp(210px, 26vw, 260px);
+    height: clamp(290px, 35vw, 360px);
+    margin-right: 24px;
+    padding: 0 0 0 0;
+  }
+
+  .port__item .num {
+    font-size: clamp(14px, 1.4vw, 16px);
+    margin-bottom: 8px;
+  }
+}

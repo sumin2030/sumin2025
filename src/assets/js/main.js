@@ -26,12 +26,22 @@ window.addEventListener("load", function () {
         });
         let isSkillSectionVisible = false;
 
+        const ensureVideoSourceLoaded = (video) => {
+            const source = video.querySelector("source[data-src]");
+            if (source) {
+                source.setAttribute("src", source.getAttribute("data-src"));
+                source.removeAttribute("data-src");
+                video.load();
+            }
+        };
+
         const skillVideoObserver = new IntersectionObserver(
             (entries) => {
                 entries.forEach((entry) => {
                     if (entry.isIntersecting && !isSkillSectionVisible) {
                         isSkillSectionVisible = true;
                         skillVideos.forEach((video) => {
+                            ensureVideoSourceLoaded(video);
                             video.currentTime = 0;
                             const playPromise = video.play();
                             if (playPromise && typeof playPromise.catch === "function") {

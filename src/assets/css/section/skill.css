@@ -11,7 +11,7 @@
   display: grid;
   grid-template-columns: minmax(260px, 0.95fr) minmax(420px, 1.35fr);
   align-items: start;
-  gap: clamp(28px, 4vw, 64px);
+  gap: clamp(0px, 0vw, 0.0em);
   margin-bottom: clamp(72px, 14vh, 180px);
 }
 

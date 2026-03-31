@@ -2,6 +2,8 @@ import { menu } from "./menu.js";
 import { port } from "./port.js";
 import { link } from "./link.js";
 import { smooth } from "./smooth.js";
+import skillVideo01 from "../video/skill.m.01.mp4";
+import skillVideo02 from "../video/skill.m.02.mp4";
 
 window.addEventListener("load", function () {
     smooth();
@@ -25,13 +27,22 @@ window.addEventListener("load", function () {
             video.currentTime = 0;
         });
         let isSkillSectionVisible = false;
+        const skillVideoSourceMap = {
+            skill01: skillVideo01,
+            skill02: skillVideo02,
+        };
 
         const ensureVideoSourceLoaded = (video) => {
-            const source = video.querySelector("source[data-src]");
+            const source = video.querySelector("source[data-video-key]");
             if (source) {
-                source.setAttribute("src", source.getAttribute("data-src"));
-                source.removeAttribute("data-src");
-                video.load();
+                const videoKey = source.getAttribute("data-video-key");
+                const resolvedSrc = skillVideoSourceMap[videoKey];
+
+                if (resolvedSrc) {
+                    source.setAttribute("src", resolvedSrc);
+                    source.removeAttribute("data-video-key");
+                    video.load();
+                }
             }
         };
 

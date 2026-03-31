@@ -20,3 +20,13 @@
   content-visibility: auto;
   contain-intrinsic-size: 1px 800px;
 }
+
+/* 모바일에서는 재레이아웃/스크롤 계산 이슈 가능성이 있어 비활성화 */
+@media (max-width: 800px) {
+  #skill,
+  #contact,
+  #footer {
+    content-visibility: visible;
+    contain-intrinsic-size: auto;
+  }
+}

@@ -14,19 +14,11 @@
 @import url(section/footer.css);
 
 /* 화면 밖 섹션은 필요할 때 렌더링해 초기 로딩을 줄입니다 */
-#skill,
-#contact,
-#footer {
-  content-visibility: auto;
-  contain-intrinsic-size: 1px 800px;
-}
-
-/* 모바일에서는 재레이아웃/스크롤 계산 이슈 가능성이 있어 비활성화 */
-@media (max-width: 800px) {
+@media (min-width: 769px) {
   #skill,
   #contact,
   #footer {
-    content-visibility: visible;
-    contain-intrinsic-size: auto;
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 800px;
   }
 }

@@ -53,7 +53,7 @@
 }
 
 .skill__item .video {
-  width: 100%;
+  width: 90%;
   max-width: 860px;
   justify-self: end;
   overflow: visible;
@@ -61,7 +61,7 @@
 }
 
 .skill__item .video video {
-  width: 100%;
+  width: 90%;
   height: auto;
   object-fit: contain;
   display: block;

@@ -78,6 +78,32 @@
   margin-top: auto; 
 }
 
+/* 7. 포트 이미지 hover 인터랙션 */
+.port__item {
+  transform: translateY(0) scale(1);
+  transform-origin: center bottom;
+  transition: transform 0.28s ease;
+  will-change: transform;
+}
+
+.port__item .img {
+  display: block;
+  width: 100%;
+}
+
+.port__item .img img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .port__item:hover {
+    transform: translateY(-5px) scale(1.05);
+  }
+}
+
 /* --------------------------------------------------
    [반응형] 768px 이하 모바일 설정
    -------------------------------------------------- */

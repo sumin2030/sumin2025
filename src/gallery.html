@@ -11,6 +11,19 @@
     <link rel="stylesheet" href="./image-viewer.css">
     
     <style>
+        :root {
+            /* back 버튼 커스텀 영역: 여기만 수정해도 됩니다 */
+            --back-top: 10px;
+            --back-left: 10px;
+            --back-padding-y: 10px;
+            --back-padding-x: 14px;
+            --back-radius: 999px;
+            --back-font-size: 14px;
+            --back-bg: rgba(255, 255, 255, 0.2);
+            --back-border: 1px solid rgba(255, 255, 255, 0.32);
+            --back-blur: 4px;
+        }
+
         html, body {
             height: auto !important; 
             overflow-y: auto !important; 
@@ -29,17 +42,63 @@
             flex-direction: column;
         }
         .viewer__header {
-            padding: 20px;
-            display: flex;
-            align-items: center;
-            gap: 20px;
+            position: fixed;
+            top: var(--back-top);
+            left: var(--back-left);
+            z-index: 9999;
+            padding: 0;
+            margin: 0;
+            width: auto !important;
+            background: transparent !important;
+            border: 0 !important;
+            box-shadow: none !important;
+            display: block;
+            pointer-events: none;
         }
         .back-btn {
+            pointer-events: auto;
             cursor: pointer;
-            padding: 8px 16px;
-            background: #eee;
-            border: none;
-            border-radius: 4px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: auto !important;
+            max-width: max-content;
+            padding: var(--back-padding-y) var(--back-padding-x);
+            margin: 0;
+            background: var(--back-bg);
+            border: var(--back-border);
+            border-radius: var(--back-radius);
+            backdrop-filter: blur(var(--back-blur));
+            -webkit-backdrop-filter: blur(var(--back-blur));
+            color: #000;
+            font-size: var(--back-font-size);
+            font-weight: 600;
+            line-height: 1;
+            appearance: none;
+            -webkit-appearance: none;
+            transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+        }
+        .back-btn.is-dark-bg {
+            color: #fff;
+            border-color: rgba(255, 255, 255, 0.42);
+        }
+        .back-btn.is-light-bg {
+            color: #000;
+            border-color: rgba(0, 0, 0, 0.2);
+        }
+        .viewer__title {
+            display: none;
+        }
+        @media (max-width: 768px) {
+            :root {
+                --back-padding-y: 9px;
+                --back-padding-x: 12px;
+                --back-font-size: 13px;
+            }
+            .back-btn {
+                padding: var(--back-padding-y) var(--back-padding-x);
+                font-size: var(--back-font-size);
+            }
         }
         .image-container img {
             width: 100%;
@@ -87,15 +146,12 @@
              "0": {
 
                images: [
-                        new URL("./assets/img2/0.jpg" , import.meta.url).href,
-                         ], 
+                        new URL("./assets/img2/0.jpg" , import.meta.url).href, ], 
                  },
             
             "1": {
 
-               images: [
-                        new URL("./assets/img2/1.jpg" , import.meta.url).href,
-                         ], 
+               images: [new URL("./assets/img2/1.jpg" , import.meta.url).href, ], 
                  },
             
             "2": {
@@ -108,7 +164,7 @@
             },
             "4": {
  
-                desc: "동양적인 무드를 현대적으로 재해석한 인센스 홀더 디자인입니다.",                images: [new URL("./assets/img2/4.jpg", import.meta.url).href],
+             images: [new URL("./assets/img2/4.jpg", import.meta.url).href],
             },
             "5": {
 
@@ -170,6 +226,77 @@
                 imageContainer.appendChild(newImg);
             });
         }
+
+        const backBtn = document.querySelector('.back-btn');
+
+        function setBackButtonContrast() {
+            if (!backBtn) return;
+            const images = Array.from(document.querySelectorAll('.image-container img'));
+            if (images.length === 0) return;
+
+            const btnRect = backBtn.getBoundingClientRect();
+            const sampleX = btnRect.left + btnRect.width / 2;
+            const sampleY = btnRect.top + btnRect.height / 2;
+
+            const targetImage = images.find((img) => {
+                const r = img.getBoundingClientRect();
+                return (
+                    sampleX >= r.left &&
+                    sampleX <= r.right &&
+                    sampleY >= r.top &&
+                    sampleY <= r.bottom &&
+                    img.complete &&
+                    img.naturalWidth > 0 &&
+                    img.naturalHeight > 0
+                );
+            });
+
+            if (!targetImage) return;
+
+            const imgRect = targetImage.getBoundingClientRect();
+            const scaleX = targetImage.naturalWidth / imgRect.width;
+            const scaleY = targetImage.naturalHeight / imgRect.height;
+            const px = Math.max(0, Math.min(targetImage.naturalWidth - 1, Math.round((sampleX - imgRect.left) * scaleX)));
+            const py = Math.max(0, Math.min(targetImage.naturalHeight - 1, Math.round((sampleY - imgRect.top) * scaleY)));
+
+            const sampleSize = 24;
+            const sx = Math.max(0, px - Math.floor(sampleSize / 2));
+            const sy = Math.max(0, py - Math.floor(sampleSize / 2));
+            const sw = Math.min(sampleSize, targetImage.naturalWidth - sx);
+            const sh = Math.min(sampleSize, targetImage.naturalHeight - sy);
+
+            const canvas = document.createElement('canvas');
+            canvas.width = sw;
+            canvas.height = sh;
+            const ctx = canvas.getContext('2d', { willReadFrequently: true });
+            if (!ctx) return;
+
+            try {
+                ctx.drawImage(targetImage, sx, sy, sw, sh, 0, 0, sw, sh);
+                const { data } = ctx.getImageData(0, 0, sw, sh);
+                let totalLuma = 0;
+                const pxCount = data.length / 4;
+
+                for (let i = 0; i < data.length; i += 4) {
+                    const r = data[i];
+                    const g = data[i + 1];
+                    const b = data[i + 2];
+                    totalLuma += (0.299 * r) + (0.587 * g) + (0.114 * b);
+                }
+
+                const avgLuma = totalLuma / pxCount;
+                backBtn.classList.toggle('is-dark-bg', avgLuma < 145);
+                backBtn.classList.toggle('is-light-bg', avgLuma >= 145);
+            } catch (e) {
+                backBtn.classList.remove('is-dark-bg');
+                backBtn.classList.add('is-light-bg');
+            }
+        }
+
+        window.addEventListener('scroll', setBackButtonContrast, { passive: true });
+        window.addEventListener('resize', setBackButtonContrast);
+        window.addEventListener('load', setBackButtonContrast);
+        requestAnimationFrame(setBackButtonContrast);
     </script>
 </body>
 </html>

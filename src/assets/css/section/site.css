@@ -8,9 +8,10 @@
   width: 100%;
   height: 3.5vw;
   font-size: 2.5vw;
-  font-weight: 900;
+  font-weight: 820;
   line-height: -0.5;
   font-family: var(--mainKor-font);
+  letter-spacing: -0.04em;
   text-transform: uppercase;
   color: var(--black100);
   border-bottom: 0.2vw solid var(--black100);
@@ -18,7 +19,7 @@
 }
 .site__title em {
   font-size: 1.5rem;
-  font-weight: 400;
+  font-weight: 500;
   line-height: 2;
 }
 .site__wrap {
@@ -56,10 +57,11 @@
 .site__item .text > div {
   font-size: 2vw;
   line-height: 1.5;
-  font-weight: 900;
+  font-weight: 780;
   text-transform: uppercase;
   text-decoration: underline;
   font-family: var(--mainEng-font);
+  letter-spacing: -0.03em;
 }
 .site__item .title {
   font-family: var(--mainKor-font);
@@ -86,6 +88,7 @@
 .site__item .info span {
   font-family: var(--mainKor-font);
   font-size: 16px;
+  font-weight: 500;
   padding: 1.5% 2.5%;
   text-transform: uppercase;
 }

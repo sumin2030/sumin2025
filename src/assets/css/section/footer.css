@@ -6,6 +6,8 @@
 }
 .footer__text {
     font-size: 13px;
+    font-weight: 560;
+    letter-spacing: -0.01em;
     text-transform: uppercase;
     border-top: 1px solid var(--black);
     border-bottom: 1px solid var(--black);
@@ -25,7 +27,7 @@
     border-bottom: 1px solid var(--black);
     padding: 20px 0;
     text-transform: uppercase;
-    font-weight: 700;
+    font-weight: 620;
     position: relative;
     transition: all 0.3s;
 }
@@ -45,6 +47,7 @@
 }
 .footer__info .left .desc {
     font-size: 14px;
+    font-weight: 430;
     padding-top: 20px;
 }
 .footer__info .right {
@@ -65,11 +68,13 @@
 .footer__info .right li a {
     padding: 14px 0;
     font-size: 15px;
+    font-weight: 520;
     display: inline-block;
     text-transform: uppercase;
 }
 .footer__info .right li em {
     font-size: 13px;
+    font-weight: 430;
     padding-left: 10px;
     opacity: 0;
     transition: all 0.3s;
@@ -81,6 +86,7 @@
     text-align: center;
     text-transform: uppercase;
     font-size: 13px;
+    font-weight: 520;
     margin-bottom: 20px;
 }
 

@@ -4,9 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>이미지 갤러리 | Portfolio</title>
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon-C4InODU0.svg">
     
     
     <style>
+        :root {
+            /* back 버튼 커스텀 영역: 여기만 수정해도 됩니다 */
+            --back-top: 10px;
+            --back-left: 10px;
+            --back-padding-y: 10px;
+            --back-padding-x: 14px;
+            --back-radius: 999px;
+            --back-font-size: 14px;
+            --back-bg: rgba(255, 255, 255, 0.2);
+            --back-border: 1px solid rgba(255, 255, 255, 0.32);
+            --back-blur: 4px;
+        }
+
         html, body {
             height: auto !important; 
             overflow-y: auto !important; 
@@ -25,17 +39,63 @@
             flex-direction: column;
         }
         .viewer__header {
-            padding: 20px;
-            display: flex;
-            align-items: center;
-            gap: 20px;
+            position: fixed;
+            top: var(--back-top);
+            left: var(--back-left);
+            z-index: 9999;
+            padding: 0;
+            margin: 0;
+            width: auto !important;
+            background: transparent !important;
+            border: 0 !important;
+            box-shadow: none !important;
+            display: block;
+            pointer-events: none;
         }
         .back-btn {
+            pointer-events: auto;
             cursor: pointer;
-            padding: 8px 16px;
-            background: #eee;
-            border: none;
-            border-radius: 4px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: auto !important;
+            max-width: max-content;
+            padding: var(--back-padding-y) var(--back-padding-x);
+            margin: 0;
+            background: var(--back-bg);
+            border: var(--back-border);
+            border-radius: var(--back-radius);
+            backdrop-filter: blur(var(--back-blur));
+            -webkit-backdrop-filter: blur(var(--back-blur));
+            color: #000;
+            font-size: var(--back-font-size);
+            font-weight: 600;
+            line-height: 1;
+            appearance: none;
+            -webkit-appearance: none;
+            transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+        }
+        .back-btn.is-dark-bg {
+            color: #fff;
+            border-color: rgba(255, 255, 255, 0.42);
+        }
+        .back-btn.is-light-bg {
+            color: #000;
+            border-color: rgba(0, 0, 0, 0.2);
+        }
+        .viewer__title {
+            display: none;
+        }
+        @media (max-width: 768px) {
+            :root {
+                --back-padding-y: 9px;
+                --back-padding-x: 12px;
+                --back-font-size: 13px;
+            }
+            .back-btn {
+                padding: var(--back-padding-y) var(--back-padding-x);
+                font-size: var(--back-font-size);
+            }
         }
         .image-container img {
             width: 100%;
@@ -49,9 +109,9 @@
             text-align: center;
         }
     </style>
-  <script type="module" crossorigin src="/assets/gallery-xrPKV03u.js"></script>
+  <script type="module" crossorigin src="/assets/gallery-BfLrkuk7.js"></script>
   <link rel="modulepreload" crossorigin href="/assets/modulepreload-polyfill-B5Qt9EMX.js">
-  <link rel="stylesheet" crossorigin href="/assets/gallery-D9ICxPpw.css">
+  <link rel="stylesheet" crossorigin href="/assets/gallery-DVjBze9V.css">
 </head>
 <body>
 

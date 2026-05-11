@@ -117,7 +117,7 @@
   .port__category {
     /* 모바일에서는 화면 끝 여백을 1.5rem으로 축소 */
     padding: 8rem 1.5rem 1rem 1.5rem !important;
-    letter-spacing: 0.5em; 	
+    letter-spacing: 0.3em; 	
   }
 
   .port__description {
